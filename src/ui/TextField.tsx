@@ -1,21 +1,14 @@
-import { ChangeEventHandler } from "react";
-
-type TextFieldTypes = {
-  label: string;
-  name: string;
-  value?: string;
-  placeholder: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  maxLength?: number;
-};
+import { get } from "react-hook-form";
+import { TextFieldTypes } from "../lib/TextFieldType";
 
 function TextField({
   label,
   name,
-  value,
-  onChange,
   placeholder = "",
   maxLength = 100,
+  register,
+  errors,
+  validationSchema,
 }: TextFieldTypes) {
   return (
     <div className="w-full">
@@ -26,14 +19,18 @@ function TextField({
         autoComplete="off"
         className="input input-bordered w-full focus:bg-white bg-gray-200 h-[45px] text-center transition-all duration-300 outline-none"
         type="text"
-        name={name}
         maxLength={maxLength}
         id={name}
-        value={value}
-        onChange={onChange}
         placeholder={placeholder}
+        {...register(name, validationSchema)}
       />
+      {get(errors, `${name}.message`, null) && (
+        <span className="text-red-500 my-1">
+          {get(errors, `${name}.message`, null)}
+        </span>
+      )}
     </div>
   );
 }
+
 export default TextField;

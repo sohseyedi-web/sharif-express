@@ -19,6 +19,15 @@ const SendOtp = ({ onSubmit, loading, register, errors }: SendOtpProps) => {
         label={"شماره موبایل"}
         name={"phoneNumber"}
         placeholder="شماره موبایل را وارد کنید"
+        register={register}
+        errors={errors}
+        validationSchema={{
+          required: "شماره موبایل ضرروی است",
+          minLength: {
+            value: 11,
+            message: "شماره موبایل اشتباه است",
+          },
+        }}
       />
       <button className="mt-2 btn btn-active btn-success w-full h-[45px] text-white">
         {loading ? "لطفا صبر کنید" : "ورود / ثبت نام"}

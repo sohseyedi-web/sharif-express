@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { getOTP } from "../../service/authService";
-import { AxiosError } from "axios";
 
 const AuthContainer = () => {
   const [step, setStep] = useState<number>(1);
@@ -26,7 +25,7 @@ const AuthContainer = () => {
       const data = await mutateAsync({ phoneNumber: "09331559119" });
       setStep(2);
       toast.success(data.message);
-    } catch (error :AxiosError | any) {
+    } catch (error :any) {
       toast.error(error?.response?.data?.message);
     }
   };
