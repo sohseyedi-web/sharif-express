@@ -24,7 +24,7 @@ export const useLogOut = () => {
       queryClient.removeQueries();
       navigate("/", { replace: true });
     },
-    onError: (err) => {
+    onError: (err: { response: { data: { message: string } } }) => {
       toast.error(err?.response?.data?.message);
     },
   });

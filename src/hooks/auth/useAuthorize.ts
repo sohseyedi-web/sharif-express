@@ -1,6 +1,10 @@
 import { useLocation } from "react-router-dom";
 import useUser from "./useUser";
 
+interface Roles {
+  [key: string]: string;
+}
+
 export const useAuthorize = () => {
   const { isLoading, data: user } = useUser();
 
@@ -11,7 +15,7 @@ export const useAuthorize = () => {
 
   if (karbar) isAuthenticated = true;
 
-  const ROLES = {
+  const ROLES: Roles = {
     admin: "ADMIN",
     user: "USER",
   };

@@ -6,10 +6,10 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { getOTP } from "../../service/authService";
+import { AxiosError } from "axios";
 
 const AuthContainer = () => {
-
-  const [step,setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(1);
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: getOTP,
@@ -19,7 +19,6 @@ const AuthContainer = () => {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm();
 
   const sendOtpHandler = async () => {
@@ -27,7 +26,7 @@ const AuthContainer = () => {
       const data = await mutateAsync({ phoneNumber: "09331559119" });
       setStep(2);
       toast.success(data.message);
-    } catch (error) {
+    } catch (error :AxiosError | any) {
       toast.error(error?.response?.data?.message);
     }
   };
@@ -35,7 +34,14 @@ const AuthContainer = () => {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <SendOtp />;
+        return (
+          <SendOtp
+            onSubmit={handleSubmit(sendOtpHandler)}
+            loading={isPending}
+            register={register}
+            errors={errors}
+          />
+        );
       case 2:
         return <CheckOtp />;
       case 3:
