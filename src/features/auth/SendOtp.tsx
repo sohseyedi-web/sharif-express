@@ -17,8 +17,8 @@ const SendOtp = ({ onSubmit, loading, register, errors }: SendOtpProps) => {
       </p>
       <TextField
         label={"شماره موبایل"}
-        name={"phoneNumber"}
         placeholder="شماره موبایل را وارد کنید"
+        name={"phoneNumber"}
         register={register}
         errors={errors}
         validationSchema={{
