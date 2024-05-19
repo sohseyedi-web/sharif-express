@@ -1,6 +1,11 @@
+import { useState } from "react";
 import * as RiIcon from "react-icons/ri";
+import { orderLists } from "../../constant/orderListValue";
+import { toPersianNumbers } from "../../utils/toPersianNumbers";
 
 const Layout = () => {
+  const [lists, setLists] = useState(orderLists);
+
   return (
     <>
       <header className="flex mt-5 items-center justify-center gap-x-3 flex-wrap">
@@ -13,9 +18,34 @@ const Layout = () => {
           <h3 className="lg:text-lg text-sm font-semibold">سفارشات گذشته</h3>
         </button>
       </header>
-      <section className="max-w-2xl bg-black mx-auto mt-2 lg:px-2 px-5 p-2">
-        <form action=""></form>
-      </section>
+      <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-5 p-2">
+        <form>
+          <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
+            فرم ایجاد سفارش
+          </h4>
+          <section className="w-full p-2 cursor-pointer h-[180px] overflow-y-auto shadow-sm mt-2 rounded-xl">
+            <div className="flex items-center justify-between flex-wrap space-y-2">
+              {lists.map((list) => (
+                <div
+                  key={list.id}
+                  className="flex items-center justify-between gap-x-2 md:w-[45%] w-full"
+                >
+                  <button className="w-6 h-6 rounded bg-green-600 text-white">
+                    +
+                  </button>
+                  <div className="flex items-center gap-x-1">
+                    <span>{toPersianNumbers(String(list.value))}</span>
+                    <span>{list.label}</span>
+                  </div>
+                  <button className="w-6 h-6 rounded bg-green-600 text-white">
+                    -
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+        </form>
+      </main>
     </>
   );
 };
