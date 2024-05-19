@@ -1,8 +1,15 @@
-import React from 'react'
+import Navbar from '../features/panel/Navbar'
 
 const Panel = () => {
+
+  
+
+
   return (
-    <div>Panel</div>
+    <>
+      <Navbar/>
+      <div>Panel</div>
+    </>
   )
 }
 
