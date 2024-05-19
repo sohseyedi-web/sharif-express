@@ -1,16 +1,13 @@
-import Navbar from '../features/panel/Navbar'
+import Layout from "../features/panel/Layout";
+import Navbar from "../features/panel/Navbar";
 
 const Panel = () => {
-
-  
-
-
   return (
     <>
-      <Navbar/>
-      <div>Panel</div>
+      <Navbar />
+      <Layout />
     </>
-  )
-}
+  );
+};
 
-export default Panel
+export default Panel;
