@@ -24,8 +24,7 @@ const CheckOtp = ({ phoneNumber, onStep, onResend }: CheckOtpPropsType) => {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
       if (!user.isActive) return onStep(3);
-      if (user.role === "OWNER") return navigate("/owner");
-      if (user.role === "FREELANCER") return navigate("/freelancer");
+      if (user.role === "USER") return navigate("/panel");
       if (user.role === "ADMIN") return navigate("/admin");
     } catch (error: any) {
       toast.error(error?.response?.data?.message);

@@ -21,8 +21,8 @@ const CompleteProfile = () => {
     try {
       const { user, message } = await mutateAsync(data);
       toast.success(message);
-      if (user.role === "OWNER") return navigate("/owner");
-      if (user.role === "FREELANCER") return navigate("/freelancer");
+      if (user.role === "USER") return navigate("/panel");
+      if (user.role === "ADMIN") return navigate("/admin");
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }
@@ -36,6 +36,7 @@ const CompleteProfile = () => {
       <TextField
         label={"نام کاربری"}
         name="name"
+        placeholder="نام و نام خانوادگی"
         register={register}
         validationSchema={{
           required: "نام کاربری ضرروی است",
@@ -45,6 +46,7 @@ const CompleteProfile = () => {
       <TextField
         label={"شهر محل سکونت"}
         name="city"
+        placeholder="شهر شما"
         register={register}
         validationSchema={{
           required: " شهر شما ضرروی است",

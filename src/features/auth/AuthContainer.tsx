@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { getOTP } from "../../service/authService";
 
 const AuthContainer = () => {
-  const [step, setStep] = useState<number>(2);
+  const [step, setStep] = useState<number>(1);
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: getOTP,
@@ -23,11 +23,11 @@ const AuthContainer = () => {
   const sendOtpHandler = async () => {
     try {
       const data = await mutateAsync({ phoneNumber: "09331559119" });
-      setStep(2);
       toast.success(data.message);
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }
+    setStep(2);
   };
 
   const renderStep = () => {
