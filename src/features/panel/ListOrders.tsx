@@ -1,23 +1,11 @@
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { useDispatch, useSelector } from "react-redux";
 import { addingOrderItem, removeOrderItem } from "../../store/reducer";
-import { Item } from "../../store/types";
 import { RootState } from "../../store/store";
 
 const ListOrders = () => {
+  const { lists } = useSelector((state: RootState) => state.sharif);
   const dispatch = useDispatch();
-
-  const {lists} = useSelector((state : RootState) => state.sharif)
-
-
-
-  const handleAddItem = (item: Item) => {
-    dispatch(addingOrderItem(item));
-  };
-
-  const handleRemoveItem = (item: Item) => {
-    dispatch(removeOrderItem(item));
-  };
 
   return (
     <section className="w-full py-2 cursor-pointer h-[180px] overflow-y-auto mt-2">
@@ -29,7 +17,7 @@ const ListOrders = () => {
           >
             <button
               type="button"
-              onClick={() => handleAddItem(list)}
+              onClick={() => dispatch(addingOrderItem(list))}
               className="w-6 h-6 rounded bg-green-600 text-white"
             >
               +
@@ -41,7 +29,7 @@ const ListOrders = () => {
             <button
               disabled={list.value === 0}
               type="button"
-              onClick={() => handleRemoveItem(list)}
+              onClick={() => dispatch(removeOrderItem(list))}
               className="w-6 h-6 rounded bg-green-600 text-white"
             >
               -
@@ -54,3 +42,4 @@ const ListOrders = () => {
 };
 
 export default ListOrders;
+
