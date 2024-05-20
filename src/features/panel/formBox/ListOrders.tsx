@@ -1,7 +1,7 @@
-import { toPersianNumbers } from "../../utils/toPersianNumbers";
+import { toPersianNumbers } from "../../../utils/toPersianNumbers";
 import { useDispatch, useSelector } from "react-redux";
-import { addingOrderItem, removeOrderItem } from "../../store/reducer";
-import { RootState } from "../../store/store";
+import { addingOrderItem, removeOrderItem } from "../../../store/reducer";
+import { RootState } from "../../../store/store";
 
 const ListOrders = () => {
   const { lists } = useSelector((state: RootState) => state.sharif);
