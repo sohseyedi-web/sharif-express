@@ -1,8 +1,41 @@
 import * as RiIcon from "react-icons/ri";
 import ListOrders from "./ListOrders";
-import { toPersianNumbersWithComma } from './../../utils/toPersianNumbers';
+import { toPersianNumbersWithComma } from "./../../utils/toPersianNumbers";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { clearOrder } from "../../store/reducer";
+import useUser from "../../hooks/auth/useUser";
+import { FieldValues, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 const Layout = () => {
+  const { register, handleSubmit } = useForm();
+  const { lists } = useSelector((state: RootState) => state.sharif);
+  const { data } = useUser();
+  const dispatch = useDispatch();
+
+  const totalPrice = lists.reduce(
+    (price, item) => price + item.value * item.price,
+    0
+  );
+
+  const addNewOrder = (values: FieldValues) => {
+    const newList = lists.filter((i) => i.value >= 1);
+    if (!newList.length) {
+      toast.error("لیست سفارش خالی میباشد");
+    } else {
+      const { phoneNumber, name } = data.user;
+      const orderValue = {
+        ...values,
+        phoneNumber,
+        name,
+        totalPrice,
+        lists: newList,
+      };
+      console.log(orderValue);
+    }
+  };
+
   return (
     <>
       <header className="flex mt-5 items-center justify-center gap-x-3 flex-wrap">
@@ -16,7 +49,7 @@ const Layout = () => {
         </button>
       </header>
       <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-5 p-2">
-        <form className="space-y-4">
+        <form onSubmit={handleSubmit(addNewOrder)} className="space-y-4">
           <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
             فرم ایجاد سفارش
           </h4>
@@ -25,7 +58,12 @@ const Layout = () => {
           <hr />
           <div className="form-control my-3">
             <label className="cursor-pointer flex  gap-x-2 items-center">
-              <input type="checkbox" className="checkbox checkbox-success" />
+              <input
+                type="checkbox"
+                className="checkbox checkbox-success"
+                {...register("private")}
+                name="private"
+              />
               <span className="label-text font-semibold">
                 مایلم سفارش به صورت تک شویی انجام شود
               </span>
@@ -33,9 +71,12 @@ const Layout = () => {
           </div>
           <div className="flex items-center justify-between gap-x-1">
             <button className="btn bg-green-700 text-white w-[80%] h-[45px]">
-              قیمت : {toPersianNumbersWithComma("1000000")} تومان
+              قیمت : {toPersianNumbersWithComma(String(totalPrice))} تومان
             </button>
-            <span className="text-red-500 font-semibold w-[20%] text-center cursor-pointer">
+            <span
+              onClick={() => dispatch(clearOrder())}
+              className="text-red-500 font-semibold w-[20%] text-center cursor-pointer"
+            >
               انصراف؟
             </span>
           </div>
