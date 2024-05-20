@@ -10,9 +10,12 @@ import CompleteOrder from "./CompleteOrder";
 const FormBox = () => {
   const [step, setStep] = useState<number>(1);
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
-  const [orderValues, setOrderValues] = useState({});
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { lists } = useSelector((state: RootState) => state.sharif);
   const { data } = useUser();
 
@@ -24,15 +27,8 @@ const FormBox = () => {
   const addNewOrder = (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
-    const order = {
-      ...values,
-      phoneNumber,
-      name,
-      totalPrice,
-      lists: newList,
-    };
-    setOrderValues(order);
-    setStep(2);
+    console.log({ ...values, phoneNumber, name, totalPrice, lists: newList });
+    setStep(3);
   };
 
   const renderStep = () => {
@@ -40,7 +36,7 @@ const FormBox = () => {
       case 1:
         return (
           <AddOrderForm
-            onSubmit={handleSubmit(addNewOrder)}
+            onSubmit={() => setStep(2)}
             onChange={() => setIsPrivate(!isPrivate)}
             register={register}
             name={"private"}
@@ -49,7 +45,13 @@ const FormBox = () => {
           />
         );
       case 2:
-        return <MapContainer />;
+        return (
+          <MapContainer
+            register={register}
+            errors={errors}
+            onSubmit={handleSubmit(addNewOrder)}
+          />
+        );
       case 3:
         return <CompleteOrder />;
     }
