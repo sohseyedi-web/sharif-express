@@ -5,9 +5,10 @@ type MapTypes = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
+  loading: boolean;
 };
 
-const MapContainer = ({ onSubmit, register, errors }: MapTypes) => {
+const MapContainer = ({ onSubmit, register, errors, loading }: MapTypes) => {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
@@ -25,7 +26,7 @@ const MapContainer = ({ onSubmit, register, errors }: MapTypes) => {
         }}
       />
       <button className="btn bg-green-700 text-white w-full h-[45px]">
-        ثبت سفارش
+        {loading ? "لطفا صبر کنید" : "ثبت سفارش"}
       </button>
     </form>
   );

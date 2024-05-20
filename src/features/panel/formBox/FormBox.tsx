@@ -6,10 +6,12 @@ import { RootState } from "../../../store/store";
 import AddOrderForm from "./AddOrderForm";
 import MapContainer from "./MapContainer";
 import CompleteOrder from "./CompleteOrder";
+import { useAddOrder } from "../../../hooks/orders/useOrders";
 
 const FormBox = () => {
   const [step, setStep] = useState<number>(1);
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
+  const { addOrder, isCreating } = useAddOrder();
 
   const {
     register,
@@ -24,10 +26,17 @@ const FormBox = () => {
     0
   );
 
-  const addNewOrder = (values: FieldValues) => {
+  const addNewOrder = async (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
-    console.log({ ...values, phoneNumber, name, totalPrice, lists: newList });
+    const orders = {
+      ...values,
+      phoneNumber,
+      name,
+      price: totalPrice,
+      lists: newList,
+    };
+    await addOrder(orders);
     setStep(3);
   };
 
@@ -39,7 +48,7 @@ const FormBox = () => {
             onSubmit={() => setStep(2)}
             onChange={() => setIsPrivate(!isPrivate)}
             register={register}
-            name={"private"}
+            name={"isPrivate"}
             isPrivate={isPrivate}
             totalPrice={totalPrice}
           />
@@ -50,10 +59,11 @@ const FormBox = () => {
             register={register}
             errors={errors}
             onSubmit={handleSubmit(addNewOrder)}
+            loading={isCreating}
           />
         );
       case 3:
-        return <CompleteOrder resetStep={() => setStep(1)}/>;
+        return <CompleteOrder resetStep={() => setStep(1)} />;
     }
   };
 
