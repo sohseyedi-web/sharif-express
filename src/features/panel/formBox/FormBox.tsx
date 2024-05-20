@@ -53,7 +53,7 @@ const FormBox = () => {
           />
         );
       case 3:
-        return <CompleteOrder />;
+        return <CompleteOrder resetStep={() => setStep(1)}/>;
     }
   };
 
