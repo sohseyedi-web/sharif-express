@@ -48,10 +48,9 @@ const Layout = () => {
 
   return (
     <>
-      <PanelHeader setShow={setShow}/>
+      <PanelHeader setShow={setShow} />
       <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-5 p-2">
-        <FormBox/>
-        <PrevOrders/>
+        {show ? <FormBox /> : <PrevOrders />}
         <form onSubmit={handleSubmit(addNewOrder)} className="space-y-4">
           <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
             فرم ایجاد سفارش
