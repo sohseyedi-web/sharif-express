@@ -25,6 +25,7 @@ const MapContainer = ({ onSubmit, register, errors, loading }: MapTypes) => {
           required: " شهر شما ضرروی است",
         }}
       />
+
       <button className="btn bg-green-700 text-white w-full h-[45px]">
         {loading ? "لطفا صبر کنید" : "ثبت سفارش"}
       </button>
