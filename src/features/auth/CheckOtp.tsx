@@ -5,17 +5,19 @@ import { useMutation } from "@tanstack/react-query";
 import { checkOTP } from "../../service/authService";
 import toast from "react-hot-toast";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
+import { useDispatch } from "react-redux";
+import { addingStep } from "../../store/reducer";
 
 type CheckOtpPropsType = {
   phoneNumber: string;
-  onStep: React.Dispatch<React.SetStateAction<number>>;
   onResend: () => void;
 };
 
-const CheckOtp = ({ phoneNumber, onStep, onResend }: CheckOtpPropsType) => {
+const CheckOtp = ({ phoneNumber, onResend }: CheckOtpPropsType) => {
   const [time, setTime] = useState<number>(120);
   const [otp, setOtp] = useState<string>("");
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const { mutateAsync, isPending } = useMutation({ mutationFn: checkOTP });
 
   const checkOtpHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +25,7 @@ const CheckOtp = ({ phoneNumber, onStep, onResend }: CheckOtpPropsType) => {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (!user.isActive) return onStep(3);
+      if (!user.isActive) return dispatch(addingStep(3));
       if (user.role === "USER") return navigate("/panel");
       if (user.role === "ADMIN") return navigate("/admin");
     } catch (error: any) {

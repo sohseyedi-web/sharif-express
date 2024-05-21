@@ -1,25 +1,27 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import useUser from "../../../hooks/auth/useUser";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import AddOrderForm from "./AddOrderForm";
 import MapContainer from "./MapContainer";
 import CompleteOrder from "./CompleteOrder";
 import { useAddOrder } from "../../../hooks/orders/useOrders";
+import { addingStep } from "../../../store/reducer";
 
 const FormBox = () => {
-  const [step, setStep] = useState<number>(1);
+  const { step, lists } = useSelector((state: RootState) => state.sharif);
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
   const { addOrder, isCreating } = useAddOrder();
+  const dispatch = useDispatch();
+  const { data } = useUser();
+
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { lists } = useSelector((state: RootState) => state.sharif);
-  const { data } = useUser();
 
   const totalPrice = lists.reduce(
     (price, item) => price + item.value * item.price,
@@ -36,8 +38,8 @@ const FormBox = () => {
       price: totalPrice,
       lists: newList,
     };
+    dispatch(addingStep(1));
     await addOrder(orders);
-    setStep(3);
   };
 
   const renderStep = () => {
@@ -45,7 +47,6 @@ const FormBox = () => {
       case 1:
         return (
           <AddOrderForm
-            onSubmit={() => setStep(2)}
             onChange={() => setIsPrivate(!isPrivate)}
             register={register}
             name={"isPrivate"}
@@ -63,7 +64,7 @@ const FormBox = () => {
           />
         );
       case 3:
-        return <CompleteOrder resetStep={() => setStep(1)} />;
+        return <CompleteOrder />;
     }
   };
 

@@ -4,6 +4,7 @@ import { orderLists } from "../../constant/orderListValue";
 
 const initialState: IssueInitialState = {
   lists: orderLists,
+  step: 1,
 };
 
 const sharifReducer = createSlice({
@@ -34,13 +35,25 @@ const sharifReducer = createSlice({
         }
       }
     },
+    addingStep: (state, action: PayloadAction<number>) => {
+      state.step = state.step + action.payload;
+    },
+    decreaseStep: (state, action: PayloadAction<number>) => {
+      state.step = state.step - action.payload;
+
+    },
     clearOrder(state) {
       state.lists.forEach((i) => (i.value = 0));
     },
   },
 });
 
-export const { addingOrderItem, removeOrderItem, clearOrder } =
-  sharifReducer.actions;
+export const {
+  addingOrderItem,
+  addingStep,
+  decreaseStep,
+  removeOrderItem,
+  clearOrder,
+} = sharifReducer.actions;
 
 export default sharifReducer.reducer;

@@ -1,11 +1,11 @@
 import { HiCheckCircle } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { clearOrder } from "../../../store/reducer";
+import { clearOrder, decreaseStep } from "../../../store/reducer";
 
-const CompleteOrder = ({ resetStep }: { resetStep: () => void }) => {
+const CompleteOrder = () => {
   const dispatch = useDispatch();
   const handleCompleteOrder = () => {
-    resetStep();
+    dispatch(decreaseStep(2));
     dispatch(clearOrder());
   };
 

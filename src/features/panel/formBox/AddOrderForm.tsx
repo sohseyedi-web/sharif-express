@@ -1,11 +1,10 @@
 import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
-import { clearOrder } from "../../../store/reducer";
+import { addingStep, clearOrder } from "../../../store/reducer";
 import ListOrders from "./ListOrders";
 import { useDispatch } from "react-redux";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 type AddOrderFormType = {
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
   onChange: () => void;
   isPrivate: boolean;
   register: UseFormRegister<FieldValues>;
@@ -14,7 +13,6 @@ type AddOrderFormType = {
 };
 
 const AddOrderForm = ({
-  onSubmit,
   totalPrice,
   name,
   register,
@@ -24,7 +22,7 @@ const AddOrderForm = ({
   const dispatch = useDispatch();
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form className="space-y-4">
       <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
         فرم ایجاد سفارش
       </h4>
@@ -49,12 +47,16 @@ const AddOrderForm = ({
             </label>
           </div>
           <div className="flex items-center justify-between gap-x-1">
-            <button className="btn bg-green-700 text-white w-[80%] h-[45px]">
+            <button
+              type="button"
+              onClick={() => dispatch(addingStep(1))}
+              className="btn bg-green-700 text-white w-[80%] h-[45px]"
+            >
               قیمت :
               {isPrivate
                 ? toPersianNumbersWithComma(String(totalPrice + 50000))
-                : toPersianNumbersWithComma(String(totalPrice))} 
-               تومان
+                : toPersianNumbersWithComma(String(totalPrice))}
+              تومان
             </button>
             <span
               onClick={() => dispatch(clearOrder())}

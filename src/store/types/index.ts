@@ -7,4 +7,5 @@ export interface Item {
 
 export interface IssueInitialState {
   lists: Item[];
+  step : number
 }

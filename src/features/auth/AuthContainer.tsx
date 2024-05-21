@@ -1,14 +1,17 @@
 import CompleteProfile from "./CompleteProfile";
 import SendOtp from "./SendOtp";
 import CheckOtp from "./CheckOtp";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { getOTP } from "../../service/authService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { addingStep } from "../../store/reducer";
 
 const AuthContainer = () => {
-  const [step, setStep] = useState<number>(1);
+  const { step } = useSelector((state: RootState) => state.sharif);
+  const dispatch = useDispatch();
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: getOTP,
@@ -27,7 +30,7 @@ const AuthContainer = () => {
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }
-    setStep(2);
+    dispatch(addingStep(1));
   };
 
   const renderStep = () => {
@@ -45,7 +48,6 @@ const AuthContainer = () => {
         return (
           <CheckOtp
             phoneNumber={"09331559119"}
-            onStep={setStep}
             onResend={sendOtpHandler}
           />
         );
