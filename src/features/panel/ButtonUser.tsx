@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useLogOut, useDetailUser } from "../../hooks/auth/useUser";
+import { toast } from "react-hot-toast";
 
 const ButtonUser = () => {
   const { data, isLoading } = useDetailUser();
   const { logOut, isPending } = useLogOut();
 
-  const handleLogOut = () => {
-    logOut();
+  const handleLogOut = async () => {
+    await logOut();
+    toast.success("با موفقیت خارج شدید");
   };
 
   return (
