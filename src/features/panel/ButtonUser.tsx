@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/auth/useUser";
+import ToggleSwitch from "../../ui/ToggleSwitch";
 
 const ButtonUser = () => {
   const { data, isLoading } = useUser();
@@ -23,9 +24,9 @@ const ButtonUser = () => {
         </li>
         <hr />
         <li>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pl-0">
             <span>حالت شب</span>
-            سییج
+            <ToggleSwitch/>
           </div>
         </li>
         <hr />
