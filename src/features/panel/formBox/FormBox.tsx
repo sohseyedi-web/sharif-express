@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import useUser from "../../../hooks/auth/useUser";
+import {useDetailUser} from "../../../hooks/auth/useUser";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import AddOrderForm from "./AddOrderForm";
@@ -14,7 +14,7 @@ const FormBox = () => {
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
   const { addOrder, isCreating } = useAddOrder();
   const dispatch = useDispatch();
-  const { data } = useUser();
+  const { data } = useDetailUser();
 
 
   const {

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import useUser from "../../hooks/auth/useUser";
+import { useLogOut, useDetailUser } from "../../hooks/auth/useUser";
 
 const ButtonUser = () => {
-  const { data, isLoading } = useUser();
+  const { data, isLoading } = useDetailUser();
+  const { logOut, isPending } = useLogOut();
+
+  const handleLogOut = () => {
+    logOut();
+  };
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
@@ -30,7 +35,9 @@ const ButtonUser = () => {
         </li>
         <hr />
         <li>
-          <button className="text-red-500 font-semibold">خروج از حساب</button>
+          <button onClick={handleLogOut} className="text-red-500 font-semibold">
+            {isPending ? "..." : "خروج از حساب"}
+          </button>
         </li>
       </ul>
     </div>
