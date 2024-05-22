@@ -1,6 +1,6 @@
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
-type ValidationSchemaTypes = {
+export type ValidationSchemaTypes = {
   required?: string;
   minLength?: {
     value: number;

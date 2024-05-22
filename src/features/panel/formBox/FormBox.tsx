@@ -20,7 +20,8 @@ const FormBox = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors ,isDirty, isValid},
+    watch
   } = useForm();
 
   const totalPrice = lists.reduce(
@@ -38,6 +39,7 @@ const FormBox = () => {
       price: totalPrice,
       lists: newList,
     };
+    console.log(orders)
     dispatch(addingStep(1));
     await addOrder(orders);
   };
@@ -49,9 +51,12 @@ const FormBox = () => {
           <AddOrderForm
             onChange={() => setIsPrivate(!isPrivate)}
             register={register}
-            name={"isPrivate"}
             isPrivate={isPrivate}
             totalPrice={totalPrice}
+            errors={errors}
+            watch={watch}
+            isDirty={isDirty}
+            isValid={isValid}
           />
         );
       case 2:
