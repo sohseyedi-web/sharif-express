@@ -73,7 +73,7 @@ const AddOrderForm = ({
       <div className="flex items-center justify-between gap-x-1">
         <button
           type="button"
-          disabled={!isDirty || !isValid || totalPrice === 0}
+          disabled={totalPrice === 0 || !isDirty || !isValid}
           onClick={() => dispatch(addingStep(1))}
           className="btn bg-green-700 text-white w-[80%] h-[45px]"
         >

@@ -8,9 +8,18 @@ type MapTypes = {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
   loading: boolean;
+  isDirty: boolean;
+  isValid: boolean;
 };
 
-const MapContainer = ({ onSubmit, register, errors, loading }: MapTypes) => {
+const MapContainer = ({
+  onSubmit,
+  register,
+  errors,
+  loading,
+  isDirty,
+  isValid,
+}: MapTypes) => {
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +43,10 @@ const MapContainer = ({ onSubmit, register, errors, loading }: MapTypes) => {
           required: " شهر شما ضرروی است",
         }}
       />
-      <button className="btn bg-green-700 text-white w-full h-[45px]">
+      <button
+        disabled={!isDirty || !isValid}
+        className="btn bg-green-700 text-white w-full h-[45px]"
+      >
         {loading ? "لطفا صبر کنید" : "ثبت سفارش"}
       </button>
     </form>

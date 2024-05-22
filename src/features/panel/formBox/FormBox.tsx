@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import {useDetailUser} from "../../../hooks/auth/useUser";
+import { useDetailUser } from "../../../hooks/auth/useUser";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import AddOrderForm from "./AddOrderForm";
@@ -16,12 +16,11 @@ const FormBox = () => {
   const dispatch = useDispatch();
   const { data } = useDetailUser();
 
-
   const {
     register,
     handleSubmit,
-    formState: { errors ,isDirty, isValid},
-    watch
+    formState: { errors, isDirty, isValid },
+    watch,
   } = useForm();
 
   const totalPrice = lists.reduce(
@@ -32,16 +31,20 @@ const FormBox = () => {
   const addNewOrder = async (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
-    const orders = {
-      ...values,
-      phoneNumber,
-      name,
-      price: totalPrice,
-      lists: newList,
-    };
-    console.log(orders)
-    dispatch(addingStep(1));
-    await addOrder(orders);
+
+    try {
+      const orders = {
+        ...values,
+        phoneNumber,
+        name,
+        price: totalPrice,
+        lists: newList,
+      };
+      await addOrder(orders);
+      dispatch(addingStep(1));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const renderStep = () => {
@@ -55,8 +58,8 @@ const FormBox = () => {
             totalPrice={totalPrice}
             errors={errors}
             watch={watch}
-            isDirty={isDirty}
             isValid={isValid}
+            isDirty={isDirty}
           />
         );
       case 2:
@@ -66,6 +69,8 @@ const FormBox = () => {
             errors={errors}
             onSubmit={handleSubmit(addNewOrder)}
             loading={isCreating}
+            isValid={isValid}
+            isDirty={isDirty}
           />
         );
       case 3:
