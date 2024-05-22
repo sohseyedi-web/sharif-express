@@ -8,6 +8,7 @@ import MapContainer from "./MapContainer";
 import CompleteOrder from "./CompleteOrder";
 import { useAddOrder } from "../../../hooks/orders/useOrders";
 import { addingStep } from "../../../store/reducer";
+import toast from "react-hot-toast";
 
 const FormBox = () => {
   const { step, lists } = useSelector((state: RootState) => state.sharif);
@@ -19,6 +20,7 @@ const FormBox = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors, isDirty, isValid },
     watch,
   } = useForm();
@@ -28,9 +30,12 @@ const FormBox = () => {
     0
   );
 
+  
+
   const addNewOrder = async (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
+    const wayPayment = getValues("payment")
 
     try {
       const orders = {
@@ -40,8 +45,12 @@ const FormBox = () => {
         price: totalPrice,
         lists: newList,
       };
-      await addOrder(orders);
-      dispatch(addingStep(1));
+      if (wayPayment === "ONLINE") {
+        toast.success("الان منتقل میشوید");
+      } else {
+        await addOrder(orders);
+        dispatch(addingStep(1));
+      }
     } catch (error) {
       console.log(error);
     }
