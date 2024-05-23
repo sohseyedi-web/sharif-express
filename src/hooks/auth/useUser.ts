@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUserProfile, logout } from "../../service/authService";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
-export default function useUser() {
+export const useDetailUser = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: getUserProfile,
@@ -13,7 +13,7 @@ export default function useUser() {
   const role = data?.user?.role.toLowerCase();
 
   return { data, isLoading, role };
-}
+};
 
 export const useLogOut = () => {
   const queryClient = useQueryClient();
@@ -24,7 +24,7 @@ export const useLogOut = () => {
       queryClient.removeQueries();
       navigate("/", { replace: true });
     },
-    onError: (err: { response: { data: { message: string } } }) => {
+    onError: (err: any) => {
       toast.error(err?.response?.data?.message);
     },
   });

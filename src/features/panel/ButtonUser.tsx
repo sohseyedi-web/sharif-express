@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
-import useUser from "../../hooks/auth/useUser";
 import ToggleSwitch from "../../ui/ToggleSwitch";
+import { useLogOut, useDetailUser } from "../../hooks/auth/useUser";
+import { toast } from "react-hot-toast";
 
 const ButtonUser = () => {
-  const { data, isLoading } = useUser();
+  const { data, isLoading } = useDetailUser();
+  const { logOut, isPending } = useLogOut();
+
+  const handleLogOut = async () => {
+    await logOut();
+    toast.success("با موفقیت خارج شدید");
+  };
 
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
@@ -26,12 +33,14 @@ const ButtonUser = () => {
         <li>
           <div className="flex items-center justify-between pl-0">
             <span>حالت شب</span>
-            <ToggleSwitch/>
+            <ToggleSwitch />
           </div>
         </li>
         <hr />
         <li>
-          <button className="text-red-500 font-semibold">خروج از حساب</button>
+          <button onClick={handleLogOut} className="text-red-500 font-semibold">
+            {isPending ? "..." : "خروج از حساب"}
+          </button>
         </li>
       </ul>
     </div>
