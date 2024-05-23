@@ -3,7 +3,7 @@ import Modal from "../../ui/Modal";
 import { useDetailUser } from "../../hooks/auth/useUser";
 import { FieldValues, useForm } from "react-hook-form";
 import { useChangeOrderStatus } from "../../hooks/orders/useChangeOrderStatus";
-import SelectField from "../../ui/selectField";
+import SelectField from "../../ui/SelectField";
 
 type Status = "CLOSED" | "OPEN";
 

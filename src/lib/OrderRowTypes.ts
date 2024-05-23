@@ -11,7 +11,7 @@ export interface OrderType {
   payment: string;
   isPrivate: boolean;
   serialNumber: number;
-  lists: string[];
+  lists: { value: string; label: string }[];
   _id: string;
 }
 
