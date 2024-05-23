@@ -2,6 +2,7 @@ import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import toLocaleDate from "../../../utils/toLocadDate";
 import { RiEyeLine } from "react-icons/ri";
 import { OrderTable } from "../../../lib/OrderRowTypes";
+import ChangeOrderStatus from "./../../orders/ChangeOrderStatus";
 
 const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
   return (
@@ -12,7 +13,7 @@ const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
       <td>
         <RiEyeLine size="26" className="text-indigo-600 cursor-pointer" />
       </td>
-      <td>ثبت شده</td>
+      <ChangeOrderStatus status={order.status} />
       <td>{toLocaleDate(order.createdAt)}</td>
     </tr>
   );

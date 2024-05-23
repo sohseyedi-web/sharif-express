@@ -1,3 +1,5 @@
+type Status = "OPEN" | "CLOSED";
+
 export interface OrderType {
   index?: number;
   phoneNumber: string;
@@ -5,7 +7,7 @@ export interface OrderType {
   createdAt: Date;
   name: string;
   address: string;
-  status: string;
+  status: Status;
   payment: string;
   isPrivate: boolean;
   serialNumber: number;
