@@ -9,7 +9,7 @@ const Layout = () => {
   return (
     <>
       <PanelHeader setShow={setShow} />
-      <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-5 p-2">
+      <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-4 p-2">
         {show ? <FormBox /> : <PrevOrders />}
       </main>
     </>

@@ -1,38 +1,15 @@
-import { useGetOrders } from "../../../hooks/orders/useOrders";
-import Table from "../../../ui/Table";
-import TableRow from "./TableRow";
-import { OrderType } from "./../../../lib/OrderRowTypes";
+import { Link } from "react-router-dom";
+import OrderTableMini from "./OrderTableMini";
 
 const PrevOrders = () => {
-  const { isLoading, orders } = useGetOrders();
-
-  if (!orders?.length) return <p>سفارشی ایجاد نکردید</p>;
-
   return (
-    <Table>
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr className=" text-gray-100">
-            <th>#</th>
-            <th>عنوان پروژه</th>
-            <th>دسته بندی</th>
-            <th>بودجه</th>
-            <th>ددلاین</th>
-            <th>تگ ها</th>
-            {/* <th>فریلنسر</th> */}
-            <th>وضعیت</th>
-            <th>عملیات</th>
-            <th>درخواست ها</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders?.map((order: OrderType, index: number) => (
-            <TableRow key={order._id} index={index} order={order} />
-          ))}
-        </tbody>
-      </table>
-    </Table>
+    <>
+      <div className="flex items-center justify-between border-b-2 pb-2 border-green-500">
+        <h4 className="lg:text-xl font-semibold text-lg ">پنج سفارش آخر</h4>
+        <Link to={"/orders"} className="cursor-pointer text-blue-500 font-medium">مشاهده کامل</Link>
+      </div>
+      <OrderTableMini/>
+    </>
   );
 };
 
