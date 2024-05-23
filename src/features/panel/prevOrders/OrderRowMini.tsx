@@ -13,7 +13,7 @@ const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
       <td>
         <RiEyeLine size="26" className="text-indigo-600 cursor-pointer" />
       </td>
-      <ChangeOrderStatus status={order.status} />
+      <ChangeOrderStatus status={order.status} orderId={order._id}/>
       <td>{toLocaleDate(order.createdAt)}</td>
     </tr>
   );
