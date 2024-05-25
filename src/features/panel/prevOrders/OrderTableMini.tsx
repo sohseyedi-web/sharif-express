@@ -20,7 +20,7 @@ const OrderTableMini = () => {
         </tr>
       </thead>
       <tbody>
-        {orders?.map((order: OrderType, index: number) => (
+        {orders?.slice(0,5).map((order: OrderType, index: number) => (
           <OrderRowMini key={order._id} index={index} order={order} />
         ))}
       </tbody>

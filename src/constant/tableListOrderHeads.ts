@@ -28,10 +28,10 @@ export const orderListTableHeads = [
     id: 7,
     label: "وضعیت",
   },
-  {
-    id: 8,
-    label: "توضیحات",
-  },
+  // {
+  //   id: 8,
+  //   label: "توضیحات",
+  // },
 
   {
     id: 9,
