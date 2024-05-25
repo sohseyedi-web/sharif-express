@@ -28,11 +28,7 @@ const sharifReducer = createSlice({
     removeOrderItem(state, action: PayloadAction<Item>) {
       const index = state.lists.findIndex((i) => i.id === action.payload.id);
       if (index !== -1) {
-        if (state.lists[index].value === 1) {
-          state.lists.splice(index, 1);
-        } else {
-          state.lists[index].value--;
-        }
+        state.lists[index].value--;
       }
     },
     addingStep: (state, action: PayloadAction<number>) => {
