@@ -1,9 +1,11 @@
-import React from 'react'
+import FinanceHeader from "../features/finance/FinanceHeader";
 
 const Finance = () => {
   return (
-    <div>Finance</div>
-  )
-}
+    <>
+      <FinanceHeader />
+    </>
+  );
+};
 
-export default Finance
+export default Finance;

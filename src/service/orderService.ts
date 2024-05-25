@@ -1,6 +1,6 @@
 import { FieldValues } from "react-hook-form";
 import http from "./http";
-export function getOrders(qs : string) {
+export function getOrders(qs: string) {
   return http.get(`/orders/list/${qs}`).then(({ data }) => data.data);
 }
 
