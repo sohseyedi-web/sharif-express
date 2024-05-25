@@ -24,7 +24,7 @@ const CompleteProfile = () => {
     try {
       const { user, message } = await mutateAsync(data);
       toast.success(message);
-      if (user.role === "USER") return navigate("/panel");
+      if (user.role === "USER") return navigate("/profile");
       if (user.role === "ADMIN") return navigate("/admin");
       dispatch(decreaseStep(2))
     } catch (error: any) {

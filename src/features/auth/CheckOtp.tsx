@@ -27,7 +27,7 @@ const CheckOtp = ({ phoneNumber, onResend }: CheckOtpPropsType) => {
       toast.success(message);
       if (!user.isActive) return dispatch(addingStep(3));
       if (user.role === "USER") {
-        navigate("/panel");
+        navigate("/profile");
         dispatch(decreaseStep(1));
       }
       if (user.role === "ADMIN") {

@@ -1,11 +1,11 @@
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Panel from "./pages/Panel";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Orders from "./pages/Orders";
-import PanelLayout from "./features/panel/PanelLayout";
+import ProfileLayout from "./features/profile/ProfileLayout";
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* panel user routes */}
 
-        <Route path="/profile" element={<PanelLayout />}>
-          <Route path="/profile" element={<Panel />} />
+        <Route path="/profile" element={<ProfileLayout />}>
+          <Route path="/profile" element={<Profile />} />
           <Route path="orders" element={<Orders />} />
         </Route>
         <Route path="/join" element={<Auth />} />

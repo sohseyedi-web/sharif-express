@@ -4,7 +4,7 @@ type HeaderProps = {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const PanelHeader = ({ setShow }: HeaderProps) => {
+const ProfileHeader = ({ setShow }: HeaderProps) => {
   return (
     <header className="flex mt-5 items-center justify-center gap-x-3 flex-wrap">
       <button
@@ -25,4 +25,4 @@ const PanelHeader = ({ setShow }: HeaderProps) => {
   );
 };
 
-export default PanelHeader;
+export default ProfileHeader;

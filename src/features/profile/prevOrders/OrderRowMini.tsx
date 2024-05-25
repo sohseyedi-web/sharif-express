@@ -1,7 +1,7 @@
 import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import toLocaleDate from "../../../utils/toLocadDate";
 import { OrderTable } from "../../../lib/OrderRowTypes";
-import ChangeOrderStatus from "./../../orders/ChangeOrderStatus";
+import ChangeOrderStatus from "../../orders/ChangeOrderStatus";
 import PaymentDetail from "../../orders/PaymentDetail";
 
 const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {

@@ -1,6 +1,6 @@
 import * as RiIcon from "react-icons/ri";
 import Customlink from "./CustomLink";
-import ButtonUser from "../../features/panel/ButtonUser";
+import ButtonUser from "../../features/profile/ButtonUser";
 
 const Navbar = () => {
   return (
