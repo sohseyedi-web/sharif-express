@@ -13,7 +13,7 @@ const Navbar = () => {
             className="bg-gradient-to-r from-green-600 to-lime-600 text-white w-10 h-10 rounded-full"
           />
           <ul className="mr-3 lg:flex hidden items-center gap-x-3">
-            <Customlink name="صفحه اصلی" to={"/profile"} />
+            <Customlink name="صفحه اصلی" to={"dashboard"} />
             <Customlink name="سفارشات" to={"orders"} />
             <Customlink name="بخش مالی" to={"finance"} />
             <Customlink name="پشتیبانی" to={"support"} />
