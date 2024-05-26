@@ -2,18 +2,12 @@ import Stats from "../../ui/Stats/Stats";
 import Stat from "../../ui/Stats/Stat";
 import { useGetOrders } from "./../../hooks/orders/useOrders";
 import { FaCheckDouble, FaSackDollar } from "react-icons/fa6";
-import {
-  RiLoaderLine,
-  RiMapLine,
-  RiCalendarLine,
-  RiShirtLine,
-} from "react-icons/ri";
+import { RiLoaderLine, RiMapLine, RiCalendarLine } from "react-icons/ri";
 import { LuCalendarClock } from "react-icons/lu";
 import toLocaleDate from "../../utils/toLocadDate";
 import timeDifference from "../../utils/getDaysago";
 import { TbMathMax } from "react-icons/tb";
 import { OrderType } from "./../../lib/OrderRowTypes";
-import { useCombinedOrders } from "../../hooks/useCombinedOrders";
 
 const FinanceHeader = () => {
   const { orders, isLoading } = useGetOrders();
@@ -38,9 +32,6 @@ const FinanceHeader = () => {
     },
     orders[0]
   );
-
-  // const combinedItems = orders?.flatMap((c: OrderType) => c.lists);
-  // const orderValue = useCombinedOrders(combinedItems);
 
   return (
     <Stats>
@@ -81,13 +72,7 @@ const FinanceHeader = () => {
       <Stat title="بیشترین مبلغ سفارش" value={maxPriceOrder.price} desc="تومان">
         <TbMathMax size={29} className="text-zinc-100" />
       </Stat>
-      {/* <Stat
-        title="بیشترین مورد سفارش"
-        value={String(orderValue?.value)}
-        desc={`بار ${orderValue?.label} سفارش داده اید`}
-      >
-        <RiShirtLine size={29} className="text-teal-400" />
-      </Stat> */}
+      
     </Stats>
   );
 };
