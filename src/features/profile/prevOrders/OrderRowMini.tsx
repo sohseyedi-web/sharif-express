@@ -1,8 +1,8 @@
 import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import toLocaleDate from "../../../utils/toLocadDate";
 import { OrderTable } from "../../../lib/OrderRowTypes";
-import ChangeOrderStatus from "../../orders/ChangeOrderStatus";
 import PaymentDetail from "../../orders/PaymentDetail";
+import ChangeStatus from "../../../ui/ChangeStatus";
 
 const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
   return (
@@ -17,7 +17,7 @@ const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
         way={order.payment}
         lists={order.lists}
       />
-      <ChangeOrderStatus status={order.status} orderId={order._id} />
+      <ChangeStatus status={order.status} id={order._id} model={1}/>
       <td>{toLocaleDate(order.createdAt)}</td>
     </tr>
   );
