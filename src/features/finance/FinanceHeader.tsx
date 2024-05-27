@@ -41,55 +41,69 @@ const FinanceHeader = () => {
   const { value, label } = maxValues;
 
   return (
-    <Stats>
-      <Stat
-        title="تاریخ عضویت"
-        value={toLocaleDate(orders[orders?.length - 1]?.createdAt)}
-      >
-        <RiCalendarLine size={29} className="text-orange-500" />
-      </Stat>
-      <Stat desc="تومان" title="مجموع سفارش ها" value={total}>
-        <FaSackDollar size={28} className="text-purple-500" />
-      </Stat>
-      <Stat title="آدرس" value="-">
-        <RiMapLine size={27} className="text-red-500" />
-      </Stat>
-      <Stat title="در انتظار ما" value={waitingOrders} desc="عدد سفارش">
-        <HiOutlineTruck size={32} className=" text-fuchsia-500" />
-      </Stat>
-      <Stat
-        title="سفارش های در جریان"
-        value={unCompletedOrders}
-        desc="عدد سفارش"
-      >
-        <RiLoaderLine size={32} className="animate-pulse text-yellow-400" />
-      </Stat>
-      <Stat
-        title="سفارش های تکمیل شده"
-        value={completedOrders}
-        desc="عدد سفارش"
-      >
-        <FaCheckDouble size={29} className="text-green-600" />
-      </Stat>
+    <section className="py-3 lg:px-0 px-3">
+      <div className="flex flex-col mt-8">
+        <h4 className="lg:text-xl text-lg font-semibold text-green-600">
+          اطلاعات شما
+        </h4>
+        <hr className="dark:border-slate-700 my-2 border-slate-200" />
+        <Stats>
+          <Stat
+            title="تاریخ عضویت"
+            value={toLocaleDate(orders[orders?.length - 1]?.createdAt)}
+          >
+            <RiCalendarLine size={29} className="text-orange-500" />
+          </Stat>
+          <Stat desc="تومان" title="پرداختی های شما" value={total}>
+            <FaSackDollar size={28} className="text-purple-500" />
+          </Stat>
+          <Stat title="آدرس" value="-">
+            <RiMapLine size={27} className="text-red-500" />
+          </Stat>
+        </Stats>
+        <h4 className="lg:text-xl text-lg font-semibold text-green-600">
+          وضعیت سفارش ها
+        </h4>
+        <hr className="dark:border-slate-700 my-2 border-slate-200" />
+        <Stats>
+          <Stat title="در انتظار ما" value={waitingOrders} desc="عدد سفارش">
+            <HiOutlineTruck size={32} className=" text-fuchsia-500" />
+          </Stat>
+          <Stat
+            title="سفارش های در جریان"
+            value={unCompletedOrders}
+            desc="عدد سفارش"
+          >
+            <RiLoaderLine size={32} className="animate-pulse text-yellow-400" />
+          </Stat>
+          <Stat
+            title="سفارش های تکمیل شده"
+            value={completedOrders}
+            desc="عدد سفارش"
+          >
+            <FaCheckDouble size={29} className="text-green-600" />
+          </Stat>
 
-      <Stat
-        title="آخرین سفارش"
-        value={timeDifference(orders[0]?.createdAt)}
-        desc="از اخرین سفارش شما گذشته"
-      >
-        <LuCalendarClock size={29} className="text-blue-500" />
-      </Stat>
-      <Stat
-        title="بیشترین مبلغ سفارش"
-        value={maxPriceOrder?.price}
-        desc="تومان"
-      >
-        <TbMathMax size={29} className="text-zinc-100" />
-      </Stat>
-      <Stat title="بیشترین مورد سفارش" value={value} desc={`عدد ${label}`}>
-        <FaShirt size={29} className="text-rose-600" />
-      </Stat>
-    </Stats>
+          <Stat
+            title="آخرین سفارش"
+            value={timeDifference(orders[0]?.createdAt)}
+            desc="از اخرین سفارش شما گذشته"
+          >
+            <LuCalendarClock size={29} className="text-blue-500" />
+          </Stat>
+          <Stat
+            title="بیشترین مبلغ سفارش"
+            value={maxPriceOrder?.price}
+            desc="تومان"
+          >
+            <TbMathMax size={29} className="text-zinc-100" />
+          </Stat>
+          <Stat title="بیشترین مورد سفارش" value={value} desc={`عدد ${label}`}>
+            <FaShirt size={29} className="text-rose-600" />
+          </Stat>
+        </Stats>
+      </div>
+    </section>
   );
 };
 
