@@ -25,7 +25,7 @@ const Support = () => {
         open={open}
         title="ثبت درخواست جدید"
       >
-        <CreateSupport />
+        <CreateSupport onClose={() => setOpen(false)}/>
       </Modal>
       {!supports.length ? (
         <section className="flex items-center justify-center mt-6">

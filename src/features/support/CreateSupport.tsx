@@ -23,7 +23,11 @@ const optionList = [
   },
 ];
 
-const CreateSupport = () => {
+type FormSupport = {
+  onClose: () => void;
+};
+
+const CreateSupport = ({ onClose }: FormSupport) => {
   const { addSupport, isCreating } = useAddSupport();
   const { data } = useDetailUser();
 
@@ -37,7 +41,11 @@ const CreateSupport = () => {
   const onSubmit = async (values: FieldValues) => {
     const { phoneNumber, name } = data.user;
     const dataValues = { ...values, phoneNumber, name };
-    await addSupport(dataValues);
+    await addSupport(dataValues, {
+      onSuccess: () => {
+        onClose();
+      },
+    });
     reset();
   };
 
