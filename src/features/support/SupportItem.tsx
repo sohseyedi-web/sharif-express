@@ -3,6 +3,7 @@ import { SupportTypesBox } from "../../lib/SupportTypes";
 import toLocaleDate from "../../utils/toLocadDate";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { RiDeleteBinLine } from "react-icons/ri";
+import ChangeStatus from "../../ui/ChangeStatus";
 
 const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
   const { isDeleting, removeSupport } = useRemoveSupport();
@@ -36,8 +37,13 @@ const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
           </div>
           <div className="flex items-center justify-between">
             <p className="w-[290px] truncate font-medium">{support.desc}</p>
-            <div className="flex flex-col">
-              {/* <ChangeOrderStatus status=""/> */}
+            <div className="flex items-center gap-x-1">
+              <ChangeStatus
+                status={support.status}
+                id={support._id}
+                model={2}
+              />
+
               <RiDeleteBinLine
                 size={26}
                 className="text-red-600 cursor-pointer"

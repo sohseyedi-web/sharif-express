@@ -1,9 +1,12 @@
 import React from "react";
-import { toPersianNumbers, toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../utils/toPersianNumbers";
 import PaymentDetail from "./PaymentDetail";
-import ChangeOrderStatus from "./ChangeOrderStatus";
 import toLocaleDate from "../../utils/toLocadDate";
 import { OrderTable } from "../../lib/OrderRowTypes";
+import ChangeStatus from "../../ui/ChangeStatus";
 
 const OrderRow: React.FC<OrderTable> = ({ order, index }) => {
   return (
@@ -20,7 +23,7 @@ const OrderRow: React.FC<OrderTable> = ({ order, index }) => {
         way={order.payment}
         lists={order.lists}
       />
-      <ChangeOrderStatus status={order.status} orderId={order._id} />
+      <ChangeStatus status={order.status} id={order._id} model={1} />
       <td>{toLocaleDate(order.createdAt)}</td>
     </tr>
   );

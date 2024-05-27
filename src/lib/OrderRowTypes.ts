@@ -1,4 +1,4 @@
-type Status = "OPEN" | "CLOSED";
+export type Status = 0 | 1 | 2;
 
 export interface OrderType {
   index?: number;
