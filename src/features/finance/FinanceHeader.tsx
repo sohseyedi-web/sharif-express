@@ -72,7 +72,6 @@ const FinanceHeader = () => {
       <Stat title="بیشترین مبلغ سفارش" value={maxPriceOrder.price} desc="تومان">
         <TbMathMax size={29} className="text-zinc-100" />
       </Stat>
-      
     </Stats>
   );
 };

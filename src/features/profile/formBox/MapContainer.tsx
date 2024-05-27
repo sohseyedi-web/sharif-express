@@ -2,6 +2,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextField from "../../../ui/TextField";
 import { useDispatch } from "react-redux";
 import { decreaseStep } from "../../../store/reducer";
+import {} from "@neshan-maps-platform/ol/layer";
 
 type MapTypes = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
