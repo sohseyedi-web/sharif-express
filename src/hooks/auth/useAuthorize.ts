@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom";
-import useUser from "./useUser";
+import { useDetailUser } from "./useUser";
 
 interface Roles {
   [key: string]: string;
 }
 
 export const useAuthorize = () => {
-  const { isLoading, data: user } = useUser();
+  const { isLoading, data: user } = useDetailUser();
 
   const { user: karbar } = user || {};
   const { pathname } = useLocation();
