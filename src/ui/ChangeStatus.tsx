@@ -6,10 +6,13 @@ import { useChangeSupportStatus } from "../hooks/supports/useChangeSupportStatus
 import { useChangeOrderStatus } from "../hooks/orders/useChangeOrderStatus";
 import Modal from "./Modal";
 import { ChangeStatusProps, statusStyle } from "../lib/StatusTypes";
+import { useDetailUser } from "../hooks/auth/useUser";
 
 const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
   // state open modal
   const [open, setOpen] = useState<boolean>(false);
+
+  const { role } = useDetailUser();
 
   // custom hooks changeValues
   const { changeSupportStatus, isUpdating: isSSLoading } =
@@ -18,6 +21,14 @@ const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
     id,
     () => setOpen(false)
   );
+
+  console.log(role)
+
+  const hanldeOpen = () => {
+    if (role === "admin") {
+      setOpen(true);
+    }
+  };
 
   // handleSubmit change status
   const onSubmit = async (data: FieldValues) => {
@@ -36,7 +47,7 @@ const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
 
   return (
     <>
-      <td className="cursor-pointer" onClick={() => setOpen(true)}>
+      <td className="cursor-pointer" onClick={hanldeOpen}>
         <span className={`badge text-white ${statusStyle[status].className}`}>
           {statusStyle[status].label}
         </span>
