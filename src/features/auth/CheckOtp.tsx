@@ -6,7 +6,7 @@ import { checkOTP } from "../../service/authService";
 import toast from "react-hot-toast";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { useDispatch } from "react-redux";
-import { addingStep, decreaseStep } from "../../store/reducer";
+import { addingStep, decreaseStep } from "../../store/reducer/orderReducer";
 
 type CheckOtpPropsType = {
   phoneNumber: string;

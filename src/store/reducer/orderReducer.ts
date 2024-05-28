@@ -1,14 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IssueInitialState, Item } from "../types";
+import { OrderInitialState, Item } from "../types";
 import { orderLists } from "../../constant/orderListValue";
 
-const initialState: IssueInitialState = {
+const initialState: OrderInitialState = {
   lists: orderLists,
   step: 1,
 };
 
 const sharifReducer = createSlice({
-  name: "sharif",
+  name: "order",
   initialState,
   reducers: {
     addingOrderItem: (state, action: PayloadAction<Item>) => {

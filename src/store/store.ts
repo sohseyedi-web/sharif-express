@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sharifReducer from "./reducer/index";
+import orderReducer from "./reducer/orderReducer";
+import logicReducer from "./reducer/logicReducer";
 
 const store = configureStore({
   reducer: {
-    sharif: sharifReducer,
+    order: orderReducer,
+    logic: logicReducer,
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

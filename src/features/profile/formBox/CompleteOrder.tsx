@@ -1,6 +1,6 @@
 import { HiCheckCircle } from "react-icons/hi";
 import { useDispatch } from "react-redux";
-import { clearOrder, decreaseStep } from "../../../store/reducer";
+import { clearOrder, decreaseStep } from "../../../store/reducer/orderReducer";
 
 const CompleteOrder = () => {
   const dispatch = useDispatch();

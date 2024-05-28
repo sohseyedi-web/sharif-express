@@ -1,5 +1,5 @@
 import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
-import { addingStep, clearOrder } from "../../../store/reducer";
+import { addingStep, clearOrder } from "../../../store/reducer/orderReducer";
 import ListOrders from "./ListOrders";
 import { useDispatch } from "react-redux";
 import {

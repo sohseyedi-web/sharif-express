@@ -1,10 +1,13 @@
 import { toPersianNumbers } from "../../../utils/toPersianNumbers";
 import { useDispatch, useSelector } from "react-redux";
-import { addingOrderItem, removeOrderItem } from "../../../store/reducer";
+import {
+  addingOrderItem,
+  removeOrderItem,
+} from "../../../store/reducer/orderReducer";
 import { RootState } from "../../../store/store";
 
 const ListOrders = () => {
-  const { lists } = useSelector((state: RootState) => state.sharif);
+  const { lists } = useSelector((state: RootState) => state.order);
   const dispatch = useDispatch();
 
   return (
@@ -42,4 +45,3 @@ const ListOrders = () => {
 };
 
 export default ListOrders;
-

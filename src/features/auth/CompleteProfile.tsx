@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { completeProfile } from "../../service/authService";
 import toast from "react-hot-toast";
-import { decreaseStep } from "../../store/reducer";
+import { decreaseStep } from "../../store/reducer/orderReducer";
 import { useDispatch } from "react-redux";
 
 const CompleteProfile = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -26,7 +26,7 @@ const CompleteProfile = () => {
       toast.success(message);
       if (user.role === "USER") return navigate("/profile");
       if (user.role === "ADMIN") return navigate("/admin");
-      dispatch(decreaseStep(2))
+      dispatch(decreaseStep(2));
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     }

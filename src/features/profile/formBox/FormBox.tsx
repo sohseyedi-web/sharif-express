@@ -7,11 +7,11 @@ import AddOrderForm from "./AddOrderForm";
 import MapContainer from "./MapContainer";
 import CompleteOrder from "./CompleteOrder";
 import { useAddOrder } from "../../../hooks/orders/useOrders";
-import { addingStep } from "../../../store/reducer";
+import { addingStep } from "../../../store/reducer/orderReducer";
 import toast from "react-hot-toast";
 
 const FormBox = () => {
-  const { step, lists } = useSelector((state: RootState) => state.sharif);
+  const { step, lists } = useSelector((state: RootState) => state.order);
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
   const { addOrder, isCreating } = useAddOrder();
   const dispatch = useDispatch();
@@ -30,12 +30,10 @@ const FormBox = () => {
     0
   );
 
-  
-
   const addNewOrder = async (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
-    const wayPayment = getValues("payment")
+    const wayPayment = getValues("payment");
 
     try {
       const orders = {

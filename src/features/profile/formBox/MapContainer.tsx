@@ -1,7 +1,7 @@
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextField from "../../../ui/TextField";
 import { useDispatch } from "react-redux";
-import { decreaseStep } from "../../../store/reducer";
+import { decreaseStep } from "../../../store/reducer/orderReducer";
 import {} from "@neshan-maps-platform/ol/layer";
 
 type MapTypes = {

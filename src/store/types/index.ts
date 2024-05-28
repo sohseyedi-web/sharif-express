@@ -5,7 +5,11 @@ export interface Item {
   label: string;
 }
 
-export interface IssueInitialState {
+export interface OrderInitialState {
   lists: Item[];
   step : number
+}
+
+export interface LogicInitialState {
+  active : boolean
 }

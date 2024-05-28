@@ -7,10 +7,10 @@ import { useMutation } from "@tanstack/react-query";
 import { getOTP } from "../../service/authService";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { addingStep } from "../../store/reducer";
+import { addingStep } from "../../store/reducer/orderReducer";
 
 const AuthContainer = () => {
-  const { step } = useSelector((state: RootState) => state.sharif);
+  const { step } = useSelector((state: RootState) => state.order);
   const dispatch = useDispatch();
 
   const { mutateAsync, isPending } = useMutation({
@@ -46,10 +46,7 @@ const AuthContainer = () => {
         );
       case 2:
         return (
-          <CheckOtp
-            phoneNumber={"09331559119"}
-            onResend={sendOtpHandler}
-          />
+          <CheckOtp phoneNumber={"09331559119"} onResend={sendOtpHandler} />
         );
       case 3:
         return <CompleteProfile />;
