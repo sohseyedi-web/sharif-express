@@ -18,7 +18,7 @@ export const useAllGetOrders = () => {
 };
 export const useAllGetUsers = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ["user"],
+    queryKey: ["users"],
     queryFn: getAllUsersList,
   });
 
