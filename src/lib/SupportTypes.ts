@@ -14,4 +14,5 @@ export interface SupportType {
 
 export interface SupportTypesBox {
   support: SupportType;
+  index : number
 }
