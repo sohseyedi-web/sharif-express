@@ -9,10 +9,10 @@ import ProfileLayout from "./features/profile/ProfileLayout";
 import Finance from "./pages/Finance";
 import Support from "./pages/Support";
 import AdminContent from "./features/admin/AdminContent";
-import SupportList from "./features/admin/supports/SupportList";
-import OrderList from "./features/admin/orders/OrderList";
-import UserList from "./features/admin/users/UserList";
-import FinanceData from "./features/admin/finance/FinanceData";
+import UserList from "./pages/admin/UserList";
+import SupportsList from "./pages/admin/SupportsList";
+import FinanceData from "./pages/admin/FinanceData";
+import OrderList from "./pages/admin/OrderList";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
           <Route path="users" element={<UserList />} />
           <Route path="orders" element={<OrderList />} />
           <Route path="finance" element={<FinanceData />} />
-          <Route path="supports" element={<SupportList />} />
+          <Route path="supports" element={<SupportsList />} />
         </Route>
         <Route path="/join" element={<Auth />} />
         <Route path="*" element={<NotFound />} />

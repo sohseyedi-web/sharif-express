@@ -8,7 +8,7 @@ type CustomLinkProps = {
 
 const CustomLinkAdmin = ({ children, to } : CustomLinkProps) => {
   const navlinkClass =
-    "flex items-center gap-x-2 hover:bg-blue-100/80 hover:text-blue-900 px-2 py-1.5 rounded-lg  transition-all duration-300";
+    "flex items-center gap-x-2 hover:bg-blue-100/80 hover:text-green-500 px-2 py-1.5 rounded-lg  transition-all duration-300";
 
   return (
     <li>
@@ -16,8 +16,8 @@ const CustomLinkAdmin = ({ children, to } : CustomLinkProps) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? `${navlinkClass} bg-blue-100/80 text-blue-900`
-            : `${navlinkClass} text-gray-600`
+            ? `${navlinkClass} bg-green-500 text-white font-medium`
+            : `${navlinkClass}`
         }
       >
         {children}

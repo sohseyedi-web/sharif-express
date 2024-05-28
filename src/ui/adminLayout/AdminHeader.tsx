@@ -16,9 +16,9 @@ const AdminHeader = () => {
   };
 
   return (
-    <div className="col-span-2 py-4 border-slate-900 border-b-2 px-3 text-gray-100 w-full">
+    <div className="col-span-2 py-4 border-b-2 px-3  w-full">
       <div className="flex items-center justify-between mx-auto container">
-        <h2 className="text-3xl font-bold text-blue-500">پنل ادمین</h2>
+        <h2 className="lg:text-3xl text-2xl font-bold text-green-500">پنل ادمین</h2>
         <div className="flex items-center gap-x-5">
           <RiIcon.RiSunLine size={28} />
           <RiIcon.RiMenuLine
