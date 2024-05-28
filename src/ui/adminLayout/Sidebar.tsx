@@ -17,7 +17,7 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
       >
         <ul className="flex flex-col gap-y-4">{children}</ul>
         <div className="absolute bottom-3 right-3 rounded-lg text-center bg-green-600 w-[90%] text-white p-2 font-semibold">
-         {data.user.name}
+         {data?.user?.name}
         </div>
       </aside>
     </>

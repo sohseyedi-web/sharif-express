@@ -9,6 +9,10 @@ import ProfileLayout from "./features/profile/ProfileLayout";
 import Finance from "./pages/Finance";
 import Support from "./pages/Support";
 import AdminContent from "./features/admin/AdminContent";
+import SupportList from "./features/admin/supports/SupportList";
+import OrderList from "./features/admin/orders/OrderList";
+import UserList from "./features/admin/users/UserList";
+import FinanceData from "./features/admin/finance/FinanceData";
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
         <Route path="/admin" element={<AdminContent />}>
           <Route index element={<Navigate to={"dashboard"} replace />} />
           <Route path="dashboard" element={<Admin />} />
+          <Route path="users" element={<UserList />} />
+          <Route path="orders" element={<OrderList />} />
+          <Route path="finance" element={<FinanceData />} />
+          <Route path="supports" element={<SupportList />} />
         </Route>
         <Route path="/join" element={<Auth />} />
         <Route path="*" element={<NotFound />} />
