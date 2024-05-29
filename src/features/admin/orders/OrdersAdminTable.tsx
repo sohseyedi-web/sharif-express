@@ -12,19 +12,17 @@ const OrdersAdminTable = () => {
   return (
     <Table>
       {/* head */}
-      <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
-          {orderListTableHeads.map((order) => (
-            <th key={order.id}>{order.label}</th>
-          ))}
-          <th>عملیات</th>
-        </tr>
-      </thead>
-      <tbody>
+      <Table.Header>
+        {orderListTableHeads.map((order) => (
+          <th key={order.id}>{order.label}</th>
+        ))}
+        <th>عملیات</th>
+      </Table.Header>
+      <Table.Body>
         {orders?.map((order: OrderType, index: number) => (
           <OrderAdminRow key={order._id} index={index} order={order} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };

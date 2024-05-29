@@ -14,18 +14,16 @@ const UserListTable = () => {
   return (
     <Table>
       {/* head */}
-      <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
-          {userListTableHeads.map((user) => (
-            <th key={user.id}>{user.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
+      <Table.Header>
+        {userListTableHeads.map((user) => (
+          <th key={user.id}>{user.label}</th>
+        ))}
+      </Table.Header>
+      <Table.Body>
         {users?.map((user: UserTypes, index: number) => (
           <UserListRow key={user._id} index={index} user={user} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };

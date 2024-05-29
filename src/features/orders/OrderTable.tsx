@@ -12,18 +12,16 @@ const OrderTable = () => {
   return (
     <Table>
       {/* head */}
-      <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold">
-          {orderListTableHeads.map((order) => (
-            <th key={order.id}>{order.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
+      <Table.Header>
+        {orderListTableHeads.map((order) => (
+          <th key={order.id}>{order.label}</th>
+        ))}
+      </Table.Header>
+      <Table.Body>
         {orders?.map((order: OrderType, index: number) => (
           <OrderRow key={order._id} index={index} order={order} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };

@@ -10,22 +10,20 @@ const SupportsTable = () => {
 
   return (
     <Table>
-      <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
-          <th>#</th>
-          <th>نام کاربری</th>
-          <th>شماره موبایل</th>
-          <th>دسته بندی</th>
-          <th>تاریخ درخواست</th>
-          <th>وضعیت</th>
-          <th>مشاهده</th>
-        </tr>
-      </thead>
-      <tbody>
+      <Table.Header>
+        <th>#</th>
+        <th>نام کاربری</th>
+        <th>شماره موبایل</th>
+        <th>دسته بندی</th>
+        <th>تاریخ درخواست</th>
+        <th>وضعیت</th>
+        <th>مشاهده</th>
+      </Table.Header>
+      <Table.Body>
         {supports?.map((support: SupportType, index: number) => (
           <SupportRow key={support._id} index={index} support={support} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };

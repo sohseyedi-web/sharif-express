@@ -12,18 +12,16 @@ const OrderTableMini = () => {
   return (
     <Table>
       {/* head */}
-      <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
-          {orderMiniListTableHeads.map((order) => (
-            <th key={order.id}>{order.label}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
+      <Table.Header>
+        {orderMiniListTableHeads.map((order) => (
+          <th key={order.id}>{order.label}</th>
+        ))}
+      </Table.Header>
+      <Table.Body>
         {orders?.slice(0, 5).map((order: OrderType, index: number) => (
           <OrderRowMini key={order._id} index={index} order={order} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };
