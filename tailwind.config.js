@@ -4,5 +4,5 @@ export default {
     extend: {},
   },
   plugins: [require("daisyui")],
-  darkMode: 'media',
+  darkMode: 'class',
 };

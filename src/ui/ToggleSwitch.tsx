@@ -1,8 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from "../store/reducer/logicReducer";
+import { RootState } from "../store/store";
+import * as RiIcon from "react-icons/ri";
+
 const ToggleSwitch = () => {
+  const { darkMode } = useSelector((state: RootState) => state.logic);
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(toggleDarkMode());
+  };
+
   return (
     <label className="swap swap-rotate">
       {/* this hidden checkbox controls the state */}
-      <input type="checkbox" className="theme-controller" value="synthwave" />
+      <input
+        type="checkbox"
+        className="theme-controller"
+        onChange={handleToggle}
+        value="synthwave"
+      />
 
       {/* sun icon */}
       <svg

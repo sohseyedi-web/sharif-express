@@ -13,8 +13,38 @@ import UserList from "./pages/admin/UserList";
 import SupportsList from "./pages/admin/SupportsList";
 import FinanceData from "./pages/admin/FinanceData";
 import OrderList from "./pages/admin/OrderList";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setDark } from "./store/reducer/logicReducer";
+import { RootState } from "./store/store";
 
 function App() {
+  const dispatch = useDispatch();
+  const { darkMode } = useSelector((state: RootState) => state.logic);
+
+  console.log(darkMode);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme") as "light" | "dark";
+    if (theme) {
+      dispatch(setDark(theme));
+    } else {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        dispatch(setDark("dark"));
+      } else {
+        dispatch(setDark("light"));
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (darkMode === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
   return (
     <BrowserRouter>
       <Routes>

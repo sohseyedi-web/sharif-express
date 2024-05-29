@@ -7,9 +7,10 @@ export interface Item {
 
 export interface OrderInitialState {
   lists: Item[];
-  step : number
+  step: number;
 }
 
 export interface LogicInitialState {
-  active : boolean
+  active: boolean;
+  darkMode: "light" | "dark";
 }
