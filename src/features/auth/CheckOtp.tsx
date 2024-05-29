@@ -72,8 +72,8 @@ const CheckOtp = ({ phoneNumber, onResend }: CheckOtpPropsType) => {
           <button className="mt-2 btn btn-active btn-success w-full h-[45px] text-white">
             {isPending ? "لطفا صبر کنید" : "ثبت کد"}
           </button>
-          <p className="mt-2 text-center text-gray-800">
-            {toPersianNumbers(String(time))} ثانیه تا ارسال مجدد کد
+          <p className="mt-2 text-center">
+            <span className="text-green-500">{toPersianNumbers(String(time))}</span> ثانیه تا ارسال مجدد کد
           </p>
         </>
       ) : (

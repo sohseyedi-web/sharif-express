@@ -10,9 +10,11 @@ import { TbMathMax } from "react-icons/tb";
 import { OrderType } from "./../../lib/OrderRowTypes";
 import { HiOutlineTruck } from "react-icons/hi2";
 import { getCombinedOrders } from "../../utils/getCombinedOrders";
+import { useDetailUser } from "../../hooks/auth/useUser";
 
 const FinanceHeader = () => {
   const { orders, isLoading } = useGetOrders();
+  const {data} = useDetailUser();
 
   if (isLoading) return <div>لطفا صب رکنید</div>;
 
@@ -38,7 +40,7 @@ const FinanceHeader = () => {
 
   const maxValues = getCombinedOrders(orders);
 
-  const { value, label } = maxValues;
+  const { value, label } = maxValues || {};
 
   return (
     <section className="py-3 lg:px-0 px-3">
@@ -50,7 +52,7 @@ const FinanceHeader = () => {
         <Stats>
           <Stat
             title="تاریخ عضویت"
-            value={toLocaleDate(orders[orders?.length - 1]?.createdAt)}
+            value={toLocaleDate(data?.user?.createdAt)}
           >
             <RiCalendarLine size={29} className="text-orange-500" />
           </Stat>
@@ -65,7 +67,8 @@ const FinanceHeader = () => {
           وضعیت سفارش ها
         </h4>
         <hr className="dark:border-slate-700 my-2 border-slate-200" />
-        <Stats>
+        {orders?.length ? (
+          <Stats>
           <Stat title="در انتظار ما" value={waitingOrders} desc="عدد سفارش">
             <HiOutlineTruck size={32} className=" text-fuchsia-500" />
           </Stat>
@@ -102,6 +105,9 @@ const FinanceHeader = () => {
             <FaShirt size={29} className="text-rose-600" />
           </Stat>
         </Stats>
+        ) : (
+          <div className="w-full text-center text-lg mt-3">تا کنون سفارشی ثبت نکردید</div>
+        )}
       </div>
     </section>
   );

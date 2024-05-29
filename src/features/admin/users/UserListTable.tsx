@@ -15,7 +15,7 @@ const UserListTable = () => {
     <Table>
       {/* head */}
       <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold">
+        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
           {userListTableHeads.map((user) => (
             <th key={user.id}>{user.label}</th>
           ))}

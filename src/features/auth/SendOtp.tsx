@@ -12,7 +12,7 @@ type SendOtpProps = {
 const SendOtp = ({ onSubmit, loading, register, errors }: SendOtpProps) => {
   return (
     <form className="space-y-5 mt-3 w-full" onSubmit={onSubmit}>
-      <p className="my-3 text-gray-800 text-center">
+      <p className="my-3 text-center">
         لطفا شماره موبایل خودت رو وارد کن
       </p>
       <TextField

@@ -16,7 +16,7 @@ const Customlink = ({ name, to }: CustomLinkProps) => {
         className={({ isActive }) =>
           isActive
             ? `${navlinkClass} bg-green-500 text-white`
-            : `${navlinkClass} text-gray-600`
+            : `${navlinkClass}`
         }
       >
         {name}

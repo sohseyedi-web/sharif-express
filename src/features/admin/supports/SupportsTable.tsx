@@ -11,7 +11,7 @@ const SupportsTable = () => {
   return (
     <Table>
       <thead>
-        <tr className="bg-gray-300 text-gray-900 font-semibold">
+        <tr className="bg-gray-300 text-gray-900 font-semibold dark:bg-gray-950 dark:text-white">
           <th>#</th>
           <th>نام کاربری</th>
           <th>شماره موبایل</th>

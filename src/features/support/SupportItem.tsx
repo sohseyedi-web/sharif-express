@@ -14,7 +14,7 @@ const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
 
   return (
     <div
-      className="md:w-[47%] bg-zinc-50 w-[90%] h-[130px] md:mx-0 mx-auto border rounded-2xl py-2 px-4"
+      className="md:w-[47%] bg-zinc-50 dark:bg-zinc-900 dark:border-slate-700 w-[90%] h-[130px] md:mx-0 mx-auto border rounded-2xl py-2 px-4"
       key={support._id}
     >
       {isDeleting ? (

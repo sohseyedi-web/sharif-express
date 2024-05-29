@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const AdminHeader = () => {
   const { isPending, logOut } = useLogOut();
-  const { active } = useSelector((state: RootState) => state.logic);
+  const { active } = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
 
   const handleLogOut = async () => {
@@ -16,7 +16,7 @@ const AdminHeader = () => {
   };
 
   return (
-    <div className="col-span-2 py-4 border-b-2 px-3  w-full">
+    <div className="col-span-2 py-4 border-b-2 dark:border-gray-900 px-3  w-full ">
       <div className="flex items-center justify-between mx-auto container">
         <h2 className="lg:text-3xl text-2xl font-bold text-green-500">
           پنل ادمین

@@ -9,7 +9,7 @@ type StatPropTypes = {
 
 const Stat = ({ title, value, desc, children }: StatPropTypes) => {
   return (
-    <div className="border-slate-200 dark:border-slate-600 border lg:w-[33%] flex gap-x-3 md:w-[45%] w-[100%] rounded-xl p-2 shadow-sm md:mx-0 mx-auto">
+    <div className="border-slate-200 dark:border-slate-700 border lg:w-[33%] flex gap-x-3 md:w-[45%] w-[100%] rounded-xl p-2 shadow-sm md:mx-0 mx-auto">
       <div className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center">
         {children}
       </div>

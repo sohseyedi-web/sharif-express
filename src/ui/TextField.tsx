@@ -16,7 +16,7 @@ function TextField({
       </label>
       <input
         autoComplete="off"
-        className="input input-bordered w-full focus:bg-white bg-gray-200 h-[45px] text-center transition-all duration-300 outline-none"
+        className="input input-bordered w-full focus:bg-white bg-gray-200 dark:bg-slate-600 dark:focus:bg-slate-950 h-[45px] text-center transition-all duration-300 outline-none"
         type="text"
         id={name}
         placeholder={placeholder}

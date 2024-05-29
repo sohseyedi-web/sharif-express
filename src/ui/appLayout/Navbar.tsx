@@ -4,7 +4,7 @@ import ButtonUser from "../../features/profile/ButtonUser";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white w-full py-3 border-b border-green-400 shadow-sm lg:px-4 px-1 container mx-auto">
+    <nav className="w-full py-3 border-b border-green-400 shadow-sm lg:px-4 px-1 container mx-auto">
       <div className="flex items-center justify-between">
         <div className="flex items-center lg:gap-x-2 gap-x-0">
           <RiIcon.RiArrowRightSLine className="cursor-pointer w-8 h-8 lg:hidden block" />

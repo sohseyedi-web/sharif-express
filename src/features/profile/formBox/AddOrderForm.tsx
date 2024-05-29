@@ -65,7 +65,7 @@ const AddOrderForm = ({
             checked={isPrivate}
             onChange={onChange}
           />
-          <span className="label-text font-semibold">
+          <span className="label-text dark:text-gray-200 font-semibold">
             مایلم سفارش به صورت تک شویی انجام شود
           </span>
         </label>
@@ -75,7 +75,7 @@ const AddOrderForm = ({
           type="button"
           disabled={totalPrice === 0 || !isDirty || !isValid}
           onClick={() => dispatch(addingStep(1))}
-          className="btn bg-green-700 text-white w-[80%] h-[45px]"
+          className="btn bg-green-700 text-white border-none w-[80%] h-[45px]"
         >
           قیمت :
           {isPrivate

@@ -12,7 +12,7 @@
 
 @layer base {
   body {
-    @apply bg-[#fff];
+    @apply bg-[#fff] h-svh;
     @apply dark:bg-slate-800 dark:text-gray-200 bg-[#fff] text-gray-800;
   }
 }
