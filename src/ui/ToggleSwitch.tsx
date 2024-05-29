@@ -1,10 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { toggleDarkMode } from "../store/reducer/logicReducer";
-import { RootState } from "../store/store";
-import * as RiIcon from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { toggleDarkMode } from "../store/reducer/themeReducer";
 
 const ToggleSwitch = () => {
-  const { darkMode } = useSelector((state: RootState) => state.logic);
   const dispatch = useDispatch();
 
   const handleToggle = () => {

@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LogicInitialState } from "../types";
+import { ThemeInitialState } from "../types";
 
-const initialState: LogicInitialState = {
+const initialState: ThemeInitialState = {
   active: window.innerWidth > 1024,
   darkMode : (localStorage.getItem('theme') as 'light' | 'dark') || 'light',
 };
 
-const logicReducer = createSlice({
-  name: "logic",
+const themeReducer = createSlice({
+  name: "theme",
   initialState,
   reducers: {
     updateMedia: (state) => {
@@ -28,6 +28,6 @@ const logicReducer = createSlice({
   },
 });
 
-export const { updateMedia,changeActive,setDark,toggleDarkMode } = logicReducer.actions;
+export const { updateMedia,changeActive,setDark,toggleDarkMode } = themeReducer.actions;
 
-export default logicReducer.reducer;
+export default themeReducer.reducer;

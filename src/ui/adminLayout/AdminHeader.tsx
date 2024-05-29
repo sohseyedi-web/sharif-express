@@ -2,7 +2,7 @@ import * as RiIcon from "react-icons/ri";
 import { useLogOut } from "../../hooks/auth/useUser";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
-import { changeActive } from "../../store/reducer/logicReducer";
+import { changeActive } from "../../store/reducer/themeReducer";
 import toast from "react-hot-toast";
 
 const AdminHeader = () => {
@@ -18,7 +18,9 @@ const AdminHeader = () => {
   return (
     <div className="col-span-2 py-4 border-b-2 px-3  w-full">
       <div className="flex items-center justify-between mx-auto container">
-        <h2 className="lg:text-3xl text-2xl font-bold text-green-500">پنل ادمین</h2>
+        <h2 className="lg:text-3xl text-2xl font-bold text-green-500">
+          پنل ادمین
+        </h2>
         <div className="flex items-center gap-x-5">
           <RiIcon.RiSunLine size={28} />
           <RiIcon.RiMenuLine

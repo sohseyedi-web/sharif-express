@@ -10,7 +10,7 @@ export interface OrderInitialState {
   step: number;
 }
 
-export interface LogicInitialState {
+export interface ThemeInitialState {
   active: boolean;
   darkMode: "light" | "dark";
 }

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { changeActive } from "../store/reducer/logicReducer";
+import { changeActive } from "../store/reducer/themeReducer";
 
 const Back = () => {
-  const { active } = useSelector((state: RootState) => state.logic);
+  const { active } = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
 
   return (

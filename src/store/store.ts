@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderReducer from "./reducer/orderReducer";
-import logicReducer from "./reducer/logicReducer";
+import themeReducerReducer from "./reducer/themeReducer";
 
 const store = configureStore({
   reducer: {
     order: orderReducer,
-    logic: logicReducer,
+    theme: themeReducerReducer,
   },
 });
 

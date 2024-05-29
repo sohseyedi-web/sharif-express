@@ -15,12 +15,12 @@ import FinanceData from "./pages/admin/FinanceData";
 import OrderList from "./pages/admin/OrderList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDark } from "./store/reducer/logicReducer";
+import { setDark } from "./store/reducer/themeReducer";
 import { RootState } from "./store/store";
 
 function App() {
   const dispatch = useDispatch();
-  const { darkMode } = useSelector((state: RootState) => state.logic);
+  const { darkMode } = useSelector((state: RootState) => state.theme);
 
   console.log(darkMode);
 

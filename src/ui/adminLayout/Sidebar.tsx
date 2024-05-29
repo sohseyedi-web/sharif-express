@@ -4,8 +4,8 @@ import { RootState } from "../../store/store";
 import { useDetailUser } from "../../hooks/auth/useUser";
 
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
-  const { active } = useSelector((state: RootState) => state.logic);
-  const {data} = useDetailUser()
+  const { active } = useSelector((state: RootState) => state.theme);
+  const { data } = useDetailUser();
 
   return (
     <>
@@ -17,7 +17,7 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
       >
         <ul className="flex flex-col gap-y-4">{children}</ul>
         <div className="absolute bottom-5 right-3 rounded-lg text-center bg-green-600 w-[90%] text-white py-1.5 font-semibold">
-         {data?.user?.name}
+          {data?.user?.name}
         </div>
       </aside>
     </>
