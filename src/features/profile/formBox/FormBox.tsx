@@ -30,7 +30,7 @@ const FormBox = () => {
   useEffect(() => {
     const dayAdd = Number(getValues("day"));
     const date = addDays(new Date(), dayAdd);
-    setSelectDate(date)
+    setSelectDate(String(date));
   }, [getValues("day")]);
 
   const totalPrice = lists.reduce(
@@ -52,8 +52,8 @@ const FormBox = () => {
         day: selectDate,
       };
       console.log(orders);
-      // await addOrder(orders);
-      // dispatch(addingStep(1));
+      await addOrder(orders);
+      dispatch(addingStep(1));
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +95,7 @@ const FormBox = () => {
           />
         );
       case 4:
-        return <CompleteOrder />;
+        return <CompleteOrder/>;
     }
   };
 

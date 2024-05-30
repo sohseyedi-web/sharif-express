@@ -1,20 +1,26 @@
 import { get } from "react-hook-form";
-import { RadioGroupTypes } from "../lib/RadioType";
+import { RadioInputGroupsProps } from "../lib/RadioType";
 import RadioInput from "./RadioInput";
+
+type OptionType = {
+  label: string;
+  value: string;
+  start?: number;
+};
 
 const RadioInputGroup = ({
   register,
   watch,
   errors,
   configs,
-  currentHour,
-}: RadioGroupTypes) => {
+  current,
+}: RadioInputGroupsProps) => {
   const { name, validationSchema = {}, options } = configs;
 
   return (
     <div dir="rtl" className="flex gap-x-4 w-full py-3">
-      <div className="flex items-center cursor-pointer  w-full">
-        {options.map((option) => (
+      <div className="flex items-center cursor-pointer w-full">
+        {options.map((option: OptionType) => (
           <RadioInput
             key={option.value}
             id={option.value}
@@ -24,7 +30,7 @@ const RadioInputGroup = ({
             watch={watch}
             validationSchema={validationSchema}
             register={register}
-            currentHour={currentHour}
+            current={current}
             start={option.start}
           />
         ))}

@@ -1,16 +1,16 @@
-import { NewRadioTypes, RadioTypes } from "../lib/RadioType";
+import { RadioInputProps } from "../lib/RadioType";
 
 const RadioInput = ({
-  currentHour,
   label,
   value,
-  name,
   start,
+  name,
   id,
   validationSchema,
   watch,
+  current,
   register,
-}: NewRadioTypes) => {
+}: RadioInputProps) => {
   return (
     <label
       htmlFor={id}
@@ -23,8 +23,8 @@ const RadioInput = ({
         className="radio radio-success w-5 h-5 cursor-pointer"
         id={id}
         value={value}
-        disabled={currentHour >= start}
         checked={watch(name) === value}
+        disabled={current >= start}
       />
       {label}
     </label>

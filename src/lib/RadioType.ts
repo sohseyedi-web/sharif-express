@@ -6,24 +6,24 @@ import {
 } from "react-hook-form";
 import { ValidationSchemaTypes } from "./TextFieldType";
 
-export interface RadioGroupAllTypes {
+export interface RadioRHFProps {
   register: UseFormRegister<FieldValues>;
   errors?: FieldErrors<FieldValues>;
   watch: UseFormReturn["watch"];
 }
 
-export interface RadioTypes extends RadioGroupAllTypes {
+export interface RadioInputProps extends RadioRHFProps {
   label: string;
   name: string;
-  start: number;
   id: string;
+  start: number;
   validationSchema?: ValidationSchemaTypes;
   value: string;
-  currentHour?: number;
+  current: number;
 }
 
-export interface RadioGroupTypes extends RadioGroupAllTypes {
-  currentHour?: number;
+export interface RadioInputGroupsProps extends RadioRHFProps {
+  current?: number;
   configs: {
     name: string;
     validationSchema?: {
@@ -37,33 +37,15 @@ export interface RadioGroupTypes extends RadioGroupAllTypes {
   };
 }
 
-export type NewRadioTypes = {
-  currentHour: number;
+export type NewRadioInputProps = {
   label: string;
   name: string;
-  start: number;
   id: string;
+  start: number;
   validationSchema?: ValidationSchemaTypes;
   value: string;
+  current?: number;
   register: UseFormRegister<FieldValues>;
   errors?: FieldErrors<FieldValues>;
   watch: UseFormReturn["watch"];
-};
-
-export type NewRadioGroupTypes = {
-  register: UseFormRegister<FieldValues>;
-  errors?: FieldErrors<FieldValues>;
-  watch: UseFormReturn["watch"];
-  currentHour?: number;
-  configs: {
-    name: string;
-    validationSchema?: {
-      required: string;
-    };
-    options: [
-      { label: string; value: string; start?: number },
-      { label: string; value: string; start?: number },
-      { label: string; value: string; start?: number }
-    ];
-  };
 };

@@ -29,7 +29,7 @@ const SelectTimeForm = ({
 }: FormType) => {
   const getDay = watch("day");
   const dispatch = useDispatch();
-  const [currentHour, setCurrentHour] = useState<number>(0);
+  const [currentHour, setCurrentHour] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     if (selectDate) {
@@ -42,6 +42,8 @@ const SelectTimeForm = ({
       }
     }
   }, [selectDate]);
+
+  console.log(currentHour)
 
   return (
     <div className="space-y-5">
@@ -70,7 +72,7 @@ const SelectTimeForm = ({
             watch={watch}
             register={register}
             errors={errors}
-            currentHour={currentHour}
+            current={currentHour}
             configs={{
               name: "time",
               validationSchema: {
@@ -90,7 +92,7 @@ const SelectTimeForm = ({
                 {
                   label: `${toPersianNumbers("17 - 21")}`,
                   value: "2",
-                  start: 19,
+                  start: 20,
                 },
               ],
             }}
