@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useDetailUser } from "../../../hooks/auth/useUser";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +8,13 @@ import MapContainer from "./MapContainer";
 import CompleteOrder from "./CompleteOrder";
 import { useAddOrder } from "../../../hooks/orders/useOrders";
 import { addingStep } from "../../../store/reducer/orderReducer";
-import toast from "react-hot-toast";
+import SelectTimeForm from "./SelectTimeForm";
+import { addDays } from "date-fns";
 
 const FormBox = () => {
   const { step, lists } = useSelector((state: RootState) => state.order);
   const [isPrivate, setIsPrivate] = useState<boolean>(false);
+  const [selectDate, setSelectDate] = useState<string>("");
   const { addOrder, isCreating } = useAddOrder();
   const dispatch = useDispatch();
   const { data } = useDetailUser();
@@ -25,6 +27,12 @@ const FormBox = () => {
     watch,
   } = useForm();
 
+  useEffect(() => {
+    const dayAdd = Number(getValues("day"));
+    const date = addDays(new Date(), dayAdd);
+    setSelectDate(date)
+  }, [getValues("day")]);
+
   const totalPrice = lists.reduce(
     (price, item) => price + item.value * item.price,
     0
@@ -33,7 +41,6 @@ const FormBox = () => {
   const addNewOrder = async (values: FieldValues) => {
     const newList = lists.filter((i) => i.value >= 1);
     const { phoneNumber, name } = data.user;
-    const wayPayment = getValues("payment");
 
     try {
       const orders = {
@@ -42,13 +49,11 @@ const FormBox = () => {
         name,
         price: totalPrice,
         lists: newList,
+        day: selectDate,
       };
-      if (wayPayment === "ONLINE") {
-        toast.success("الان منتقل میشوید");
-      } else {
-        await addOrder(orders);
-        dispatch(addingStep(1));
-      }
+      console.log(orders);
+      // await addOrder(orders);
+      // dispatch(addingStep(1));
     } catch (error) {
       console.log(error);
     }
@@ -58,18 +63,27 @@ const FormBox = () => {
     switch (step) {
       case 1:
         return (
+          <SelectTimeForm
+            register={register}
+            errors={errors}
+            isValid={isValid}
+            isDirty={isDirty}
+            watch={watch}
+            selectDate={selectDate}
+          />
+        );
+      case 2:
+        return (
           <AddOrderForm
             onChange={() => setIsPrivate(!isPrivate)}
             register={register}
             isPrivate={isPrivate}
             totalPrice={totalPrice}
-            errors={errors}
-            watch={watch}
             isValid={isValid}
             isDirty={isDirty}
           />
         );
-      case 2:
+      case 3:
         return (
           <MapContainer
             register={register}
@@ -80,7 +94,7 @@ const FormBox = () => {
             isDirty={isDirty}
           />
         );
-      case 3:
+      case 4:
         return <CompleteOrder />;
     }
   };

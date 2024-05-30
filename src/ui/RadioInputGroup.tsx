@@ -7,22 +7,25 @@ const RadioInputGroup = ({
   watch,
   errors,
   configs,
+  currentHour,
 }: RadioGroupTypes) => {
   const { name, validationSchema = {}, options } = configs;
 
   return (
     <div dir="rtl" className="flex gap-x-4 w-full py-3">
-      <div className="flex items-center cursor-pointer justify-between w-full">
-        {options.map(({ label, value }: { label: string; value: string }) => (
+      <div className="flex items-center cursor-pointer  w-full">
+        {options.map((option) => (
           <RadioInput
-            key={value}
-            id={value}
-            label={label}
-            value={value}
+            key={option.value}
+            id={option.value}
+            label={option.label}
+            value={option.value}
             name={name}
             watch={watch}
             validationSchema={validationSchema}
             register={register}
+            currentHour={currentHour}
+            start={option.start}
           />
         ))}
       </div>

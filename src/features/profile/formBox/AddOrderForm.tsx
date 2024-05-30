@@ -2,21 +2,13 @@ import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import { addingStep, clearOrder } from "../../../store/reducer/orderReducer";
 import ListOrders from "./ListOrders";
 import { useDispatch } from "react-redux";
-import {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-  UseFormReturn,
-} from "react-hook-form";
-import RadioInputGroup from "../../../ui/RadioInputGroup";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 type AddOrderFormType = {
   onChange: () => void;
   isPrivate: boolean;
   register: UseFormRegister<FieldValues>;
   totalPrice: number;
-  errors: FieldErrors<FieldValues>;
-  watch: UseFormReturn["watch"];
   isDirty: boolean;
   isValid: boolean;
 };
@@ -26,8 +18,6 @@ const AddOrderForm = ({
   register,
   isPrivate,
   onChange,
-  errors,
-  watch,
   isDirty,
   isValid,
 }: AddOrderFormType) => {
@@ -38,21 +28,6 @@ const AddOrderForm = ({
       <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
         فرم ایجاد سفارش
       </h4>
-      <RadioInputGroup
-        errors={errors}
-        register={register}
-        watch={watch}
-        configs={{
-          name: "payment",
-          validationSchema: {
-            required: " انتخاب روش پرداخت ضرروی است",
-          },
-          options: [
-            { label: "پرداخت آنلاین", value: "ONLINE" },
-            { label: "پرداخت حضوری", value: "OFFLINE" },
-          ],
-        }}
-      />
       <ListOrders />
       <hr />
       <div className="form-control my-3">
