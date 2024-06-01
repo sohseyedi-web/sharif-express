@@ -1,16 +1,31 @@
 import { useState } from "react";
-import ProfileHeader from "../features/profile/ProfileHeader";
+import ChoiceService from "../features/profile/ChoiceService";
 import FormBox from "../features/profile/formBox/FormBox";
 import PrevOrders from "../features/profile/prevOrders/PrevOrders";
+import ProfileHeader from "../features/profile/ProfileHeader";
 
 const Profile = () => {
-  const [show, setShow] = useState(true);
-
+  const [show, setShow] = useState(0);
+  setShow;
   return (
     <>
-      <ProfileHeader setShow={setShow} />
-      <main className="max-w-2xl mx-auto mt-2 lg:px-2 px-4 p-2">
-        {show ? <FormBox /> : <PrevOrders />}
+      <main className="mt-2 p-2 max-w-2xl mx-auto lg:px-2 px-4">
+        {show == 0 ? <ChoiceService setShow={setShow} /> : null}
+        {show == 1 ? (
+          <>
+            <ProfileHeader
+              onClick={() => setShow(0)}
+              title={"فرم ایجاد سفارش"}
+            />
+            <FormBox />
+          </>
+        ) : null}
+        {show == 2 ? (
+          <>
+            <ProfileHeader onClick={() => setShow(0)} title={"پنج سفارش آخر"} />
+            <PrevOrders />
+          </>
+        ) : null}
       </main>
     </>
   );

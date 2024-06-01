@@ -99,7 +99,7 @@ const FormBox = () => {
     }
   };
 
-  return renderStep();
+  return <div className="max-w-2xl mx-auto ">{renderStep()}</div>;
 };
 
 export default FormBox;
