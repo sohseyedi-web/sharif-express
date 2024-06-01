@@ -19,7 +19,7 @@ const RadioInputGroup = ({
 
   return (
     <div dir="rtl" className="flex gap-x-4 w-full py-3">
-      <div className="flex items-center cursor-pointer w-full">
+      <div className="flex items-center space-y-5 flex-col cursor-pointer w-full">
         {options.map((option: OptionType) => (
           <RadioInput
             key={option.value}

@@ -6,28 +6,22 @@ import ProfileHeader from "../features/profile/ProfileHeader";
 
 const Profile = () => {
   const [show, setShow] = useState(0);
-  setShow;
   return (
-    <>
-      <main className="mt-2 p-2 max-w-2xl mx-auto lg:px-2 px-4">
-        {show == 0 ? <ChoiceService setShow={setShow} /> : null}
-        {show == 1 ? (
-          <>
-            <ProfileHeader
-              onClick={() => setShow(0)}
-              title={"فرم ایجاد سفارش"}
-            />
-            <FormBox />
-          </>
-        ) : null}
-        {show == 2 ? (
-          <>
-            <ProfileHeader onClick={() => setShow(0)} title={"پنج سفارش آخر"} />
-            <PrevOrders />
-          </>
-        ) : null}
-      </main>
-    </>
+    <main className="mt-2 p-2 max-w-2xl mx-auto lg:px-2 px-4">
+      {show == 0 ? <ChoiceService setShow={setShow} /> : null}
+      {show == 1 ? (
+        <>
+          <ProfileHeader setShow={setShow} title={"فرم ایجاد سفارش"} />
+          <FormBox />
+        </>
+      ) : null}
+      {show == 2 ? (
+        <>
+          <ProfileHeader setShow={setShow} title={"پنج سفارش آخر"} />
+          <PrevOrders />
+        </>
+      ) : null}
+    </main>
   );
 };
 

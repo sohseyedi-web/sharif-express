@@ -5,12 +5,14 @@ const PrevOrders = () => {
   return (
     <>
       <OrderTableMini />
-      <Link
-        to={"/profile/orders"}
-        className="cursor-pointer text-blue-500 font-medium w-full mt-5 bg-black"
-      >
-        مشاهده کامل
-      </Link>
+      <div className="w-full mt-3 text-center">
+        <Link
+          to={"/profile/orders"}
+          className="cursor-pointer text-blue-500 text-lg font-medium"
+        >
+          مشاهده کامل
+        </Link>
+      </div>
     </>
   );
 };

@@ -25,9 +25,6 @@ const AddOrderForm = ({
 
   return (
     <form className="space-y-4">
-      <h4 className="lg:text-xl font-semibold text-lg border-b-2 pb-2 border-green-500">
-        فرم ایجاد سفارش
-      </h4>
       <ListOrders />
       <hr />
       <div className="form-control my-3">

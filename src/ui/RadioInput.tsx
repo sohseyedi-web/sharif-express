@@ -14,7 +14,7 @@ const RadioInput = ({
   return (
     <label
       htmlFor={id}
-      className="flex items-center lg:w-[w-330px] w-[48%] rounded-xl gap-x-2 cursor-pointer"
+      className="flex items-center w-full rounded-xl gap-x-2 cursor-pointer"
     >
       <input
         type="radio"

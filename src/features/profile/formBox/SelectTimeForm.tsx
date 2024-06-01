@@ -43,11 +43,10 @@ const SelectTimeForm = ({
     }
   }, [selectDate]);
 
-  console.log(currentHour)
 
   return (
-    <div className="space-y-5">
-      <h1 className="text-xl mb-4">انتخاب تاریخ</h1>
+    <div className="space-y-1">
+      <h1 className="text-xl mt-4">انتخاب تاریخ</h1>
       <RadioInputGroup
         watch={watch}
         register={register}
@@ -67,7 +66,7 @@ const SelectTimeForm = ({
       <hr className="dark:border-slate-700 my-2 border-slate-200" />
       {getDay ? (
         <>
-          <h1 className="text-xl mb-4">انتخاب زمان</h1>
+          <h1 className="text-xl mt-4">انتخاب زمان</h1>
           <RadioInputGroup
             watch={watch}
             register={register}
