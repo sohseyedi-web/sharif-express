@@ -15,7 +15,7 @@ const Modal = ({ open, onClose, children, title }: ModalTypeProps) => {
       <Dialog
         as="div"
         dir="rtl"
-        className="relative z-10 text-right"
+        className="relative z-50 text-right"
         onClose={onClose}
       >
         <Transition.Child
