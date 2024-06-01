@@ -41,8 +41,8 @@ const Modal = ({ open, onClose, children, title }: ModalTypeProps) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full bg-slate-100 max-w-lg transform overflow-hidden rounded-xl p-6 align-middle shadow-md transition-all">
-                <Dialog.Title className="text-xl font-medium text-gray-800 w-full flex items-center justify-between py-2">
+              <Dialog.Panel className="w-full bg-slate-100 dark:bg-slate-800 max-w-lg transform overflow-hidden rounded-xl p-6 align-middle shadow-md transition-all">
+                <Dialog.Title className="text-xl font-medium text-gray-800 dark:text-gray-200 w-full flex items-center justify-between py-2">
                   <h3>{title}</h3>
 
                   <span className="cursor-pointer" onClick={onClose}>
