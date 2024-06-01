@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import AdminLayout from "../../ui/adminLayout/AdminLayout";
 import CustomLinkAdmin from "../../ui/adminLayout/CsutomLinkAdmin";
-import Sidebar from "../../ui/adminLayout/Sidebar";
+import Sidebar from "../../ui/Sidebar";
 import * as HiIcon from "react-icons/hi";
 import { updateMedia } from "../../store/reducer/themeReducer";
 import { useEffect } from "react";

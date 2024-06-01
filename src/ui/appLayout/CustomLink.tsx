@@ -7,7 +7,7 @@ type CustomLinkProps = {
 
 const Customlink = ({ name, to }: CustomLinkProps) => {
   const navlinkClass =
-    "flex items-center justify-center hover:bg-blue-100/80 hover:text-green-500 w-[100px] text-center py-1.5 rounded-lg  transition-all duration-300";
+    "flex items-center justify-center hover:bg-blue-100/80 hover:text-green-500 lg:w-[100px] w-full text-center py-1.5 rounded-lg  transition-all duration-300";
 
   return (
     <li>
