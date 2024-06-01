@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { changeActive } from "../../store/reducer/themeReducer";
 import toast from "react-hot-toast";
+import ToggleSwitch from "../ToggleSwitch";
 
 const AdminHeader = () => {
   const { isPending, logOut } = useLogOut();
@@ -22,18 +23,16 @@ const AdminHeader = () => {
           پنل ادمین
         </h2>
         <div className="flex items-center gap-x-5">
-          <RiIcon.RiSunLine size={28} />
+          <ToggleSwitch />
           <RiIcon.RiMenuLine
-            size={28}
-            className="cursor-pointer block lg:hidden"
+            className="cursor-pointer block lg:hidden w-6 h-6"
             onClick={() => dispatch(changeActive(!active))}
           />
           <RiIcon.RiLogoutCircleLine
             onClick={handleLogOut}
-            className={`text-red-500 cursor-pointer ${
+            className={`text-red-500 cursor-pointer w-6 h-6 ${
               isPending && "animate-pulse"
             }`}
-            size={28}
           />
         </div>
       </div>
