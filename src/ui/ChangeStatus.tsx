@@ -7,6 +7,7 @@ import { useChangeOrderStatus } from "../hooks/orders/useChangeOrderStatus";
 import Modal from "./Modal";
 import { ChangeStatusProps, statusStyle } from "../lib/StatusTypes";
 import { useDetailUser } from "../hooks/auth/useUser";
+import Loading from "./Loading";
 
 const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
   // state open modal
@@ -66,7 +67,7 @@ const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
             errors={errors}
           />
           <button className="btn btn-primary w-full badge">
-            {loading ? "لطفا صبر کنید" : "تایید"}
+            {loading ? <Loading status={false}/> : "تایید"}
           </button>
         </form>
       </Modal>

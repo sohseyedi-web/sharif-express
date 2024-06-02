@@ -1,5 +1,6 @@
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextField from "../../../ui/TextField";
+import Loading from "../../../ui/Loading";
 
 type MapTypes = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
@@ -35,7 +36,7 @@ const MapContainer = ({
         disabled={!isDirty || !isValid}
         className="btn bg-green-700 text-white w-full h-[45px]"
       >
-        {loading ? "لطفا صبر کنید" : "ثبت سفارش"}
+        {loading ? <Loading status={false}/> : "ثبت سفارش"}
       </button>
     </form>
   );

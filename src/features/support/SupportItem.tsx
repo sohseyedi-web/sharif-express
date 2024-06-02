@@ -4,8 +4,9 @@ import toLocaleDate from "../../utils/toLocadDate";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { RiDeleteBinLine } from "react-icons/ri";
 import ChangeStatus from "../../ui/ChangeStatus";
+import Loading from "../../ui/Loading";
 
-const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
+const SupportItem: React.FC<SupportTypesBox> = ({ support,index }) => {
   const { isDeleting, removeSupport } = useRemoveSupport();
 
   const handleRemoveCategory = () => {
@@ -19,7 +20,7 @@ const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
     >
       {isDeleting ? (
         <div className="flex items-center justify-center font-semibold">
-          لطفا صبر کنید ...
+          <Loading status={false}/>
         </div>
       ) : (
         <>

@@ -1,6 +1,7 @@
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import { FormEventHandler } from "react";
+import Loading from "../../ui/Loading";
 
 type SendOtpProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
@@ -12,9 +13,7 @@ type SendOtpProps = {
 const SendOtp = ({ onSubmit, loading, register, errors }: SendOtpProps) => {
   return (
     <form className="space-y-5 mt-3 w-full" onSubmit={onSubmit}>
-      <p className="my-3 text-center">
-        لطفا شماره موبایل خودت رو وارد کن
-      </p>
+      <p className="my-3 text-center">لطفا شماره موبایل خودت رو وارد کن</p>
       <TextField
         label={"شماره موبایل"}
         placeholder="شماره موبایل را وارد کنید"
@@ -30,7 +29,7 @@ const SendOtp = ({ onSubmit, loading, register, errors }: SendOtpProps) => {
         }}
       />
       <button className="mt-2 btn btn-active btn-success w-full h-[45px] text-white">
-        {loading ? "لطفا صبر کنید" : "ورود / ثبت نام"}
+        {loading ? <Loading status={false} /> : "ورود / ثبت نام"}
       </button>
     </form>
   );

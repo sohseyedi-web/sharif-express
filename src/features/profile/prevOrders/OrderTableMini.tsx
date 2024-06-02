@@ -3,11 +3,14 @@ import Table from "../../../ui/Table";
 import { OrderType } from "../../../lib/OrderRowTypes";
 import { orderMiniListTableHeads } from "../../../constant/tableListOrderHeads";
 import OrderRowMini from "./OrderRowMini";
+import Loading from "../../../ui/Loading";
 
 const OrderTableMini = () => {
-  const { orders } = useGetOrders();
+  const { orders,isLoading } = useGetOrders();
 
   if (!orders?.length) return <p>سفارشی ایجاد نکردید</p>;
+  if (isLoading) return <Loading/>;
+
 
   return (
     <Table>

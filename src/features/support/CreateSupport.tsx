@@ -3,6 +3,7 @@ import TextField from "../../ui/TextField";
 import SelectField from "../../ui/SelectField";
 import { useAddSupport } from "../../hooks/supports/useSupports";
 import { useDetailUser } from "../../hooks/auth/useUser";
+import Loading from "../../ui/Loading";
 
 const optionList = [
   {
@@ -110,7 +111,7 @@ const CreateSupport = ({ onClose }: FormSupport) => {
         )}
       </div>
       <button className="mt-2 btn btn-active btn-success w-full h-[45px] text-white">
-        {isCreating ? "لطفا صبر کنید" : "ثبت درخواست"}
+        {isCreating ? <Loading status={false}/> : "ثبت درخواست"}
       </button>
     </form>
   );

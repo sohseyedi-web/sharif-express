@@ -5,12 +5,13 @@ import Modal from "../ui/Modal";
 import { useGetSupports } from "../hooks/supports/useSupports";
 import SupportItem from "../features/support/SupportItem";
 import { SupportType } from "../lib/SupportTypes";
+import Loading from "../ui/Loading";
 
 const Support = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { isLoading, supports } = useGetSupports();
 
-  if (isLoading) return <div>لطفا صبر کنید</div>;
+  if (isLoading) return <Loading/>;
 
   return (
     <>
@@ -33,8 +34,8 @@ const Support = () => {
         </section>
       ) : (
         <section className="flex items-center justify-between flex-wrap gap-y-3 mt-10">
-          {supports?.map((support: SupportType) => (
-            <SupportItem support={support} key={support?._id} />
+          {supports?.map((support: SupportType , index : number) => (
+            <SupportItem support={support} key={support?._id} index={index}/>
           ))}
         </section>
       )}

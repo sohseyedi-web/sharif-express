@@ -1,12 +1,13 @@
 import { useAllGetSupports } from "../../../hooks/admin/useGetAdminData";
 import { SupportType } from "../../../lib/SupportTypes";
+import Loading from "../../../ui/Loading";
 import Table from "../../../ui/Table";
 import SupportRow from "./SupportRow";
 
 const SupportsTable = () => {
   const { isLoading, supports } = useAllGetSupports();
 
-  if (isLoading) return <div>لطفا صبر کنید</div>;
+  if (isLoading) return <Loading/>;
 
   return (
     <Table>

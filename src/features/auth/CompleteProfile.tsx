@@ -6,6 +6,7 @@ import { completeProfile } from "../../service/authService";
 import toast from "react-hot-toast";
 import { decreaseStep } from "../../store/reducer/orderReducer";
 import { useDispatch } from "react-redux";
+import Loading from "../../ui/Loading";
 
 const CompleteProfile = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,7 @@ const CompleteProfile = () => {
         errors={errors}
       />
       <button className="mt-2 btn btn-active btn-success w-full h-[45px] text-white">
-        {isPending ? "لطفا صبر کنید" : "تکمیل اطلاعات"}
+        {isPending ? <Loading status={false} /> : "تکمیل اطلاعات"}
       </button>
     </form>
   );

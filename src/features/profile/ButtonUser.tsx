@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ToggleSwitch from "../../ui/ToggleSwitch";
 import { useLogOut, useDetailUser } from "../../hooks/auth/useUser";
 import { toast } from "react-hot-toast";
+import Loading from "../../ui/Loading";
 
 const ButtonUser = () => {
   const { data, isLoading } = useDetailUser();
@@ -20,7 +21,7 @@ const ButtonUser = () => {
         className="btn btn-success text-white btn-sm px-5"
         style={{ height: "40px" }}
       >
-        {isLoading ? "..." : data.user.name}
+        {isLoading ? <Loading status={false} /> : data.user.name}
       </div>
       <ul
         tabIndex={0}

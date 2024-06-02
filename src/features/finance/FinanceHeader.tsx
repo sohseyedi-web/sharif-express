@@ -11,12 +11,13 @@ import { OrderType } from "./../../lib/OrderRowTypes";
 import { HiOutlineTruck } from "react-icons/hi2";
 import { getCombinedOrders } from "../../utils/getCombinedOrders";
 import { useDetailUser } from "../../hooks/auth/useUser";
+import Loading from "../../ui/Loading";
 
 const FinanceHeader = () => {
   const { orders, isLoading } = useGetOrders();
   const {data} = useDetailUser();
 
-  if (isLoading) return <div>لطفا صب رکنید</div>;
+  if (isLoading) return <Loading/>;
 
   const total = orders?.reduce(
     (acc: number, cur: OrderType) => acc + cur.price,

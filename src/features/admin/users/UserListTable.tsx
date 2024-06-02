@@ -3,13 +3,14 @@ import Table from "../../../ui/Table";
 import { userListTableHeads } from "../../../constant/tableListUserHeads";
 import UserListRow from "./UserListRow";
 import { UserTypes } from "../../../lib/UserTypes";
+import Loading from "../../../ui/Loading";
 
 const UserListTable = () => {
   const { data, isLoading } = useAllGetUsers();
 
   const { users } = data || {};
 
-  if (isLoading) return <div>لطفا صبر کنید</div>;
+  if (isLoading) return <Loading/>;
 
   return (
     <Table>
