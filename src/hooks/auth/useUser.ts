@@ -12,6 +12,7 @@ export const useDetailUser = () => {
 
   const role = data?.user?.role.toLowerCase();
 
+
   return { data, isLoading, role };
 };
 

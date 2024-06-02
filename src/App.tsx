@@ -17,12 +17,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDark } from "./store/reducer/themeReducer";
 import { RootState } from "./store/store";
+import ProtectedRoutes from "./ui/ProtectedRoutes";
 
 function App() {
   const dispatch = useDispatch();
   const { darkMode } = useSelector((state: RootState) => state.theme);
-
-  console.log(darkMode);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme") as "light" | "dark";
@@ -50,7 +49,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* profile user layout */}
-        <Route path="/profile" element={<ProfileLayout />}>
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoutes>
+              <ProfileLayout />
+            </ProtectedRoutes>
+          }
+        >
           <Route index element={<Navigate to={"dashboard"} replace />} />
           <Route path="dashboard" element={<Profile />} />
           <Route path="orders" element={<Orders />} />
@@ -58,7 +64,14 @@ function App() {
           <Route path="support" element={<Support />} />
         </Route>
         {/* admin layout */}
-        <Route path="/admin" element={<AdminContent />}>
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoutes>
+              <AdminContent />
+            </ProtectedRoutes>
+          }
+        >
           <Route index element={<Navigate to={"dashboard"} replace />} />
           <Route path="dashboard" element={<Admin />} />
           <Route path="users" element={<UserList />} />

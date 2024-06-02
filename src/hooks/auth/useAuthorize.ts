@@ -17,7 +17,7 @@ export const useAuthorize = () => {
 
   const ROLES: Roles = {
     admin: "ADMIN",
-    user: "USER",
+    profile: "USER",
   };
   const getRoles = pathname.split("/").at(1) as string;
 

@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom'
-import AdminHeader from './AdminHeader'
+import { Outlet } from "react-router-dom";
+import AdminHeader from "./AdminHeader";
 
-const AdminLayout = ({children} : {children : React.ReactNode}) => {
+const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <section dir="rtl" className="flex container mx-auto h-screen flex-col">
       <AdminHeader />
@@ -12,7 +12,7 @@ const AdminLayout = ({children} : {children : React.ReactNode}) => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AdminLayout
+export default AdminLayout;
