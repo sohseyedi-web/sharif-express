@@ -13,6 +13,7 @@ export interface OrderType {
   serialNumber: number;
   lists: { value: string; label: string; price: number }[];
   _id: string;
+  day : string;
 }
 
 export interface OrderTable {

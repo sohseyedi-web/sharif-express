@@ -10,10 +10,13 @@ const CompleteOrder = () => {
   const handleCompleteOrder = () => {
     dispatch(decreaseStep(3));
     dispatch(clearOrder());
-    navigate("orders");
+    navigate("/profile/orders");
   };
 
-  const { orders } = useGetOrders();
+  const { orders,isLoading } = useGetOrders();
+  console.log(orders)
+
+  if(isLoading) return <div>صبر کنید</div>
 
   return (
     <div className="border-2 border-green-500  space-y-5 rounded-xl p-3 shadow flex items-center justify-center flex-col ">

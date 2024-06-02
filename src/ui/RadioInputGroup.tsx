@@ -23,7 +23,7 @@ const RadioInputGroup = ({
         {options.map((option: OptionType) => (
           <RadioInput
             key={option.value}
-            id={option.value}
+            id={option.label}
             label={option.label}
             value={option.value}
             name={name}

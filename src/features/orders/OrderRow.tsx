@@ -20,11 +20,12 @@ const OrderRow: React.FC<OrderTable> = ({ order, index }) => {
         address={order.address}
         price={toPersianNumbersWithComma(String(order.price))}
         serial={order.serialNumber}
-        way={order.payment}
         lists={order.lists}
+        created={order.createdAt}
       />
       <ChangeStatus status={order.status} id={order._id} model={1} />
       <td>{toLocaleDate(order.createdAt)}</td>
+      <td>{toLocaleDate(new Date(order.day))}</td>
     </tr>
   );
 };

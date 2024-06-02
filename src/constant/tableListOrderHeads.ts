@@ -35,6 +35,10 @@ export const orderListTableHeads = [
 
   {
     id: 9,
+    label: "تاریخ ثبت",
+  },
+  {
+    id: 10,
     label: "تاریخ دریافت",
   },
 ];
