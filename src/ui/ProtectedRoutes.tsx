@@ -2,7 +2,6 @@ import { useDetailUser } from "../hooks/auth/useUser";
 import { useNavigate } from "react-router-dom";
 import { useAuthorize } from "../hooks/auth/useAuthorize";
 import { useEffect } from "react";
-import toast from "react-hot-toast";
 
 const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
@@ -10,9 +9,7 @@ const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isAuthorized } = useAuthorize();
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      toast.error("لطفا وارد حساب کاربری خود شوید");
-    }
+    if (!isAuthenticated) navigate("/join");
     if (isAuthenticated && !isAuthorized)
       navigate(`/${role}`, { replace: true });
   }, [isAuthenticated, isAuthorized, role, navigate]);
