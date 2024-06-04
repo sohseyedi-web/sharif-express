@@ -1,3 +1,4 @@
+import AdminQuickData from "../features/admin/AdminQuickData";
 import AdminStats from "../features/admin/AdminStats";
 import TopHeaderLists from "../features/admin/TopHeaderLists";
 
@@ -6,6 +7,8 @@ const Admin = () => {
     <>
       <TopHeaderLists title="صفحه اصلی" />
       <AdminStats />
+      <TopHeaderLists title="آخرین تغییرات"/>
+      <AdminQuickData/>
     </>
   );
 };
