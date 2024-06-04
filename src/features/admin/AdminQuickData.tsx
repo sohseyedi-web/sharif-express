@@ -26,23 +26,23 @@ const AdminQuickData = () => {
   const { supports, isLoading: supportLoading } = useAllGetSupports();
 
   return (
-    <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2">
+    <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 py-2">
       <AdminQuickDataBox
         title="کاربران سایت"
         loading={userLoading}
-        fields={data?.users?.slice(0,5)}
+        fields={data?.users?.slice(0, 5)}
         desc="به ما پیوست"
       />
       <AdminQuickDataBox
         title="آخرین سفارشات"
         loading={orderLoading}
-        fields={orders?.slice(0,5)}
+        fields={orders?.slice(0, 5)}
         desc="سفارش ثبت کرد"
       />
       <AdminQuickDataBox
         title="وضعیت درخواست ها"
         loading={supportLoading}
-        fields={supports?.slice(0,5)}
+        fields={supports?.slice(0, 5)}
         desc="درخواست ثبت کرد"
       />
     </section>
