@@ -90,12 +90,10 @@ const FormBox = () => {
             errors={errors}
             onSubmit={handleSubmit(addNewOrder)}
             loading={isCreating}
-            isValid={isValid}
-            isDirty={isDirty}
           />
         );
       case 4:
-        return <CompleteOrder/>;
+        return <CompleteOrder />;
     }
   };
 

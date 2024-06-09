@@ -15,4 +15,6 @@ export type TextFieldTypes = {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
   validationSchema?: ValidationSchemaTypes;
+  value?: string;
+  onChange?: React.ChangeEventHandler
 };

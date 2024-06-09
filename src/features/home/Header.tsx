@@ -2,7 +2,7 @@ import { RiPhoneFill, RiDownloadCloudLine } from "react-icons/ri";
 
 const Header = () => {
   return (
-    <header className="fixed w-full py-4 container flex items-center justify-end px-4">
+    <header className="w-full container flex items-center justify-end p-4 shadow">
       <div className="flex items-center gap-x-2">
         <button className="lg:px-4 px-2 h-[45px] bg-gray-600 text-white lg:text-lg text-base rounded-lg flex items-center gap-x-2">
           061-33333333
