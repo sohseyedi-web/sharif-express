@@ -10,6 +10,7 @@ import VectorSource from "ol/source/Vector";
 import { Feature } from "ol";
 import { Point } from "ol/geom";
 import { Icon, Style } from "ol/style";
+import { reverseGeoApi } from "../../../service/mapService";
 
 const MapComponent = ({
   setAddress,
@@ -60,7 +61,7 @@ const MapComponent = ({
       markerSource.addFeature(initialMarker);
 
       // Add click event to set marker position and fetch address
-      map.on("click", (event) => {
+      map.on("click", async (event) => {
         const coordinates = event.coordinate;
         const lonLat = toLonLat(coordinates);
 
@@ -80,29 +81,23 @@ const MapComponent = ({
           })
         );
         markerSource.addFeature(newMarker);
-        console.log(lonLat);
 
         // Fetch address
-        fetch(
-          `https://api.neshan.org/v5/reverse?lat=${lonLat[1]}&lng=${lonLat[0]}`,
-          {
-            headers: {
-              "Api-Key": "service.8ead83ec778b4312834d4c829039f591",
-            },
+        // https://api.neshan.org/v5/reverse?lat=${lonLat[1]}&lng=${lonLat[0]}
+        try {
+          const data = await reverseGeoApi(
+            String(lonLat[1]),
+            String(lonLat[0])
+          );
+          if (data && data.formatted_address) {
+            setAddress(data.formatted_address);
+          } else {
+            setAddress("آدرسی یافت نشد");
           }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data && data.formatted_address) {
-              setAddress(data.formatted_address);
-            } else {
-              setAddress("آدرسی یافت نشد");
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching address:", error);
-            setAddress("خطا در دریافت آدرس");
-          });
+        } catch (error) {
+          console.error("Error fetching address:", error);
+          setAddress("خطا در دریافت آدرس");
+        }
       });
 
       mapRef.current = map;
