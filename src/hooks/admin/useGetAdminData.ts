@@ -34,12 +34,11 @@ export const useAllGetSupports = () => {
 
   return { isLoading, supports };
 };
-export const useGetUser = (id: string) => {
+export const useGetDetailUser = (phone : string) => {
   const { data, isLoading } = useQuery({
-    queryKey: ["user"],
-    queryFn: () => getUserData(id),
+    queryKey: ["user-deatail"],
+    queryFn:() => getUserData(phone),
   });
-
 
   return { isLoading, data };
 };

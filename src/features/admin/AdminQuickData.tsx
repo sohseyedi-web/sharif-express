@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   useAllGetOrders,
   useAllGetSupports,
@@ -16,6 +17,7 @@ type AdminQuickPropsBox = {
       _id: string;
       name: string;
       createdAt: Date;
+      phoneNumber : string;
     }
   ];
 };
@@ -72,10 +74,12 @@ const AdminQuickDataBox = ({
           >
             <div className="flex items-center justify-between">
               <span>
-                <h5 className="font-semibold inline-block ml-1">
-                  {" "}
-                  {field?.name}{" "}
-                </h5>
+                <Link to={`/admin/user/${field?.phoneNumber}`}>
+                  <h5 className="font-semibold inline-block ml-1">
+                    {" "}
+                    {field?.name}{" "}
+                  </h5>
+                </Link>
                 {desc}
               </span>
               <span>{toLocaleDate(field.createdAt)}</span>

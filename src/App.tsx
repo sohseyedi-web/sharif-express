@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setDark } from "./store/reducer/themeReducer";
 import { RootState } from "./store/store";
 import ProtectedRoutes from "./ui/ProtectedRoutes";
+import UserDetail from "./pages/admin/UserDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,23 +65,16 @@ function App() {
           <Route path="support" element={<Support />} />
         </Route>
         {/* admin layout */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoutes>
-              <AdminContent />
-            </ProtectedRoutes>
-          }
-        >
+        <Route path="/admin" element={<AdminContent />}>
           <Route index element={<Navigate to={"dashboard"} replace />} />
           <Route path="dashboard" element={<Admin />} />
           <Route path="users" element={<UserList />} />
+          <Route path="user/:phone" element={<UserDetail />} />
           <Route path="orders" element={<OrderList />} />
           <Route path="finance" element={<FinanceData />} />
           <Route path="supports" element={<SupportsList />} />
         </Route>
         <Route path="/join" element={<Auth />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
