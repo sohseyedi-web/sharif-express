@@ -6,7 +6,7 @@ export const reverseGeoApi = async (lat: string, lng: string) => {
     {
       headers: {
         "Api-Key": import.meta.env.VITE_API_KEY_SERVICE,
-        "Content-Type":"application/json"
+        "Content-Type": "application/json",
       },
     }
   );
