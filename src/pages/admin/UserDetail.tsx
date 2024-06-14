@@ -4,6 +4,8 @@ import TopUserDetail from "../../features/admin/userDetail/TopUserDetail";
 import Loading from "../../ui/Loading";
 import { useState } from "react";
 import { ButtonActive } from "../../features/admin/userDetail/ButtonActive";
+import UserDetailTable from "../../features/admin/userDetail/UserDetailTable";
+import UserDetailQuickData from "./UserDetailQuickData";
 
 const UserDetail = () => {
   const { phone } = useParams();
@@ -37,6 +39,12 @@ const UserDetail = () => {
           title={"آمار"}
         />
       </div>
+      {/* user detail data  */}
+      {show == 1 || show == 2 ? (
+        <UserDetailTable show={show} />
+      ) : (
+        <UserDetailQuickData />
+      )}
     </>
   );
 };

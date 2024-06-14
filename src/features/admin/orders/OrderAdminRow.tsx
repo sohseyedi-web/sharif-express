@@ -25,6 +25,7 @@ const OrderAdminRow: React.FC<OrderTable> = ({ order, index }) => {
       />
       <ChangeStatus status={order.status} id={order._id} model={1} />
       <td>{toLocaleDate(order.createdAt)}</td>
+      <td>{toLocaleDate(new Date(order.day))}</td>
       <OrderAction />
     </tr>
   );
