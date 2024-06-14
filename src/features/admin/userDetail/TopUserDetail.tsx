@@ -28,9 +28,6 @@ const TopUserDetail = () => {
       <Stat title="درآمد زایی" desc="تومان" value={total}>
         <RiIcon.RiWallet3Line size="27" className="text-cyan-500" />
       </Stat>
-      <Stat title="آدرس" value="ثبت نشده">
-        <RiIcon.RiMapLine size="27" className="text-red-500" />
-      </Stat>
     </Stats>
   );
 };
