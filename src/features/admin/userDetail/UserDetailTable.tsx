@@ -13,9 +13,8 @@ type UserDetailTableTypes = {
 
 const UserDetailTable = ({ show }: UserDetailTableTypes) => {
   const { phone } = useParams();
-  const { data } = useGetDetailUser(String(phone));
+  const { supports, orders } = useGetDetailUser(String(phone));
 
-  const { supports, orders } = data || {};
 
 
 

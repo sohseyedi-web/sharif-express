@@ -8,9 +8,8 @@ import { OrderType } from "../../../lib/OrderRowTypes";
 
 const TopUserDetail = () => {
   const { phone } = useParams();
-  const { data } = useGetDetailUser(String(phone));
+  const { orders, user } = useGetDetailUser(String(phone));
 
-  const { orders, user } = data || {};
 
   const total = orders?.reduce(
     (acc: number, cur: OrderType) => acc + cur.price,

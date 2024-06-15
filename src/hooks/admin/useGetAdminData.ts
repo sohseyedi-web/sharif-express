@@ -40,5 +40,9 @@ export const useGetDetailUser = (phone : string) => {
     queryFn:() => getUserData(phone),
   });
 
-  return { isLoading, data };
+   
+
+  const {supports , orders,user} = data || {};
+
+  return { isLoading, supports , orders,user };
 };
