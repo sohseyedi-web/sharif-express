@@ -5,7 +5,7 @@ import Loading from "../../ui/Loading";
 import { useState } from "react";
 import { ButtonActive } from "../../features/admin/userDetail/ButtonActive";
 import UserDetailTable from "../../features/admin/userDetail/UserDetailTable";
-import UserDetailQuickData from "./UserDetailQuickData";
+import UserDetailStatistics from "../../features/admin/userDetail/UserDetailStatistics";
 
 const UserDetail = () => {
   const { phone } = useParams();
@@ -43,7 +43,7 @@ const UserDetail = () => {
       {show == 1 || show == 2 ? (
         <UserDetailTable show={show} />
       ) : (
-        <UserDetailQuickData />
+        <UserDetailStatistics />
       )}
     </>
   );
