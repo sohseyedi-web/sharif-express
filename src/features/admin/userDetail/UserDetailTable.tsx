@@ -1,27 +1,28 @@
 import { orderListTableHeads } from "../../../constant/tableListOrderHeads";
-import { OrderTypesArray } from "../../../lib/OrderRowTypes";
 import Table from "../../../ui/Table";
 import OrderAdminRow from "../orders/OrderAdminRow";
 import SupportRow from "../supports/SupportRow";
-import { SupportTypesArray } from "../../../lib/SupportTypes";
 import { supportListTableHeads } from "../../../constant/tableListSupportHeads";
+import { useParams } from "react-router-dom";
+import { useGetDetailUser } from "../../../hooks/admin/useGetAdminData";
+import { OrderType } from "../../../lib/OrderRowTypes";
+import { SupportType } from "../../../lib/SupportTypes";
 
 type UserDetailTableTypes = {
   show: number;
-  supports: SupportTypesArray;
-  orders: OrderTypesArray;
 };
 
-const UserDetailTable = ({ show, supports, orders }: UserDetailTableTypes) => {
-  
+const UserDetailTable = ({ show }: UserDetailTableTypes) => {
+  const { phone } = useParams();
+  const { orders, supports } = useGetDetailUser(String(phone));
 
   // order list components
-  const orderList = orders.map(({ order, index }) => (
+  const orderList = orders?.map((order: OrderType, index: number) => (
     <OrderAdminRow key={order._id} index={index} order={order} />
   ));
 
   // support list components
-  const supportList = supports.map(({ support, index }) => (
+  const supportList = supports?.map((support: SupportType, index: number) => (
     <SupportRow key={support._id} index={index} support={support} />
   ));
 

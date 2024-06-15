@@ -34,8 +34,7 @@ const UserDetailStatistics = () => {
   const { value, label } = maxValues || {};
 
   return (
-    orders?.length ? (
-        <Stats>
+    <Stats>
       <Stat title="آدرس" value="-">
         <RiMapLine size={27} className="text-red-500" />
       </Stat>
@@ -75,7 +74,6 @@ const UserDetailStatistics = () => {
         <FaShirt size={29} className="text-rose-600" />
       </Stat>
     </Stats>
-    ) : <div className="w-full text-center text-lg mt-3">تا کنون سفارشی ثبت نکردید</div>
   );
 };
 

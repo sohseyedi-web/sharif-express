@@ -11,7 +11,7 @@ const UserDetail = () => {
   const { phone } = useParams();
   const [show, setShow] = useState<number>(1);
   const { isLoading, orders, supports } = useGetDetailUser(String(phone));
-
+  const hasItems = show == 1 ? orders : show == 2 ? supports : null;
   if (isLoading) return <Loading />;
 
   return (
@@ -40,10 +40,12 @@ const UserDetail = () => {
         />
       </div>
       {/* user detail data  */}
-      {show == 1 || show == 2 ? (
-        <UserDetailTable show={show} orders={orders} supports={supports} />
-      ) : (
+      {hasItems ? (
+        <UserDetailTable show={show} />
+      ) : show == 3 ? (
         <UserDetailStatistics />
+      ) : (
+        <div>{show == 1 || show == 3 ? "سفارشی" : "درخواستی"} وجود ندارد</div>
       )}
     </>
   );

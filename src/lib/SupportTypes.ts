@@ -17,4 +17,3 @@ export interface SupportTypesBox {
   index : number
 }
 
-export type SupportTypesArray = SupportTypesBox[];

@@ -21,5 +21,4 @@ export interface OrderTable {
   index: number;
 }
 
-export type OrderTypesArray = OrderTable[];
 
