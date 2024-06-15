@@ -20,3 +20,6 @@ export interface OrderTable {
   order: OrderType;
   index: number;
 }
+
+export type OrderTypesArray = OrderTable[];
+
