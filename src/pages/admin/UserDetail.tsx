@@ -5,7 +5,6 @@ import Loading from "../../ui/Loading";
 import { useState } from "react";
 import { ButtonActive } from "../../features/admin/userDetail/ButtonActive";
 import UserDetailTable from "../../features/admin/userDetail/UserDetailTable";
-import UserDetailStatistics from "../../features/admin/userDetail/UserDetailStatistics";
 
 const UserDetail = () => {
   const { phone } = useParams();
@@ -19,7 +18,7 @@ const UserDetail = () => {
       <TopUserDetail />
       <hr className="dark:border-slate-700 my-2 border-slate-200" />
       {/* button active for show data */}
-      <div className="flex items-center gap-x-3">
+      <div className="flex items-center gap-x-3 overflow-x-auto">
         <ButtonActive
           show={show}
           onShow={() => setShow(1)}
@@ -32,20 +31,12 @@ const UserDetail = () => {
           value={2}
           title={"درخواست ها"}
         />
-        <ButtonActive
-          show={show}
-          onShow={() => setShow(3)}
-          value={3}
-          title={"آمار"}
-        />
       </div>
       {/* user detail data  */}
       {hasItems ? (
         <UserDetailTable show={show} />
-      ) : show == 3 ? (
-        <UserDetailStatistics />
       ) : (
-        <div>{show == 1 || show == 3 ? "سفارشی" : "درخواستی"} وجود ندارد</div>
+        <div>{show == 1 ? "سفارشی" : "درخواستی"} وجود ندارد</div>
       )}
     </>
   );
