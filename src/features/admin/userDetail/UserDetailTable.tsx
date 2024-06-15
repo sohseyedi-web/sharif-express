@@ -6,6 +6,7 @@ import Table from "../../../ui/Table";
 import OrderAdminRow from "../orders/OrderAdminRow";
 import SupportRow from "../supports/SupportRow";
 import { SupportType } from "../../../lib/SupportTypes";
+import { supportListTableHeads } from "../../../constant/tableListSupportHeads";
 
 type UserDetailTableTypes = {
   show: number;
@@ -14,9 +15,6 @@ type UserDetailTableTypes = {
 const UserDetailTable = ({ show }: UserDetailTableTypes) => {
   const { phone } = useParams();
   const { supports, orders } = useGetDetailUser(String(phone));
-
-
-
 
   // order list components
   const orderList = orders?.map((order: OrderType, index: number) => (
@@ -40,15 +38,9 @@ const UserDetailTable = ({ show }: UserDetailTableTypes) => {
             <th>عملیات</th>
           </>
         ) : (
-          <>
-            <th>#</th>
-            <th>نام کاربری</th>
-            <th>شماره موبایل</th>
-            <th>دسته بندی</th>
-            <th>تاریخ درخواست</th>
-            <th>وضعیت</th>
-            <th>مشاهده</th>
-          </>
+          supportListTableHeads.map((support) => (
+            <th key={support.id}>{support.label}</th>
+          ))
         )}
       </Table.Header>
       <Table.Body>{show == 1 ? orderList : supportList}</Table.Body>
