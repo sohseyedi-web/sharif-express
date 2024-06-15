@@ -37,7 +37,7 @@ const AdminContent = () => {
         </CustomLinkAdmin>
         <CustomLinkAdmin to={"finance"}>
           <HiIcon.HiOutlineCurrencyDollar size={24} />
-          <span>حسابداری</span>
+          <span>آمار/حسابداری</span>
         </CustomLinkAdmin>
         <CustomLinkAdmin to={"supports"}>
           <HiIcon.HiOutlineTemplate size={24} />
