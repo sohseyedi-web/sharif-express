@@ -3,30 +3,28 @@ import Table from "../../../ui/Table";
 import OrderAdminRow from "../orders/OrderAdminRow";
 import SupportRow from "../supports/SupportRow";
 import { supportListTableHeads } from "../../../constant/tableListSupportHeads";
-import { useParams } from "react-router-dom";
-import { useGetDetailUser } from "../../../hooks/admin/useGetAdminData";
 import { OrderType } from "../../../lib/OrderRowTypes";
 import { SupportType } from "../../../lib/SupportTypes";
 
+type ListType = SupportType | OrderType;
+
 type UserDetailTableTypes = {
   show: number;
+  lists: (SupportType | OrderType)[];
 };
 
-const UserDetailTable = ({ show }: UserDetailTableTypes) => {
-  const { phone } = useParams();
-  const { orders, supports } = useGetDetailUser(String(phone));
+const UserDetailTable = ({ show, lists }: UserDetailTableTypes) => {
+  const choiceList = lists?.map((item: ListType, index: number) =>
+    show == 1 ? (
+      // orderRow
+      <OrderAdminRow key={item._id} index={index} order={item as OrderType} />
+    ) : (
+      // supportRow
+      <SupportRow key={item._id} index={index} support={item as SupportType} />
+    )
+  );
 
-  // order list components
-  const orderList = orders?.map((order: OrderType, index: number) => (
-    <OrderAdminRow key={order._id} index={index} order={order} />
-  ));
-
-  // support list components
-  const supportList = supports?.map((support: SupportType, index: number) => (
-    <SupportRow key={support._id} index={index} support={support} />
-  ));
-
-  return (
+  return lists?.length ? (
     <Table>
       {/* head */}
       <Table.Header>
@@ -43,8 +41,10 @@ const UserDetailTable = ({ show }: UserDetailTableTypes) => {
           ))
         )}
       </Table.Header>
-      <Table.Body>{show == 1 ? orderList : supportList}</Table.Body>
+      <Table.Body>{choiceList}</Table.Body>
     </Table>
+  ) : (
+    <div>{show == 1 ? "سفارشی" : "درخواستی"} وجود ندارد</div>
   );
 };
 

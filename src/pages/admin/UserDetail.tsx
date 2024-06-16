@@ -10,7 +10,7 @@ const UserDetail = () => {
   const { phone } = useParams();
   const [show, setShow] = useState<number>(1);
   const { isLoading, orders, supports } = useGetDetailUser(String(phone));
-  const hasItems = show == 1 ? orders : show == 2 ? supports : null;
+  const hasItems = show == 1 ? orders : supports;
   if (isLoading) return <Loading />;
 
   return (
@@ -33,11 +33,7 @@ const UserDetail = () => {
         />
       </div>
       {/* user detail data  */}
-      {hasItems ? (
-        <UserDetailTable show={show} />
-      ) : (
-        <div>{show == 1 ? "سفارشی" : "درخواستی"} وجود ندارد</div>
-      )}
+      <UserDetailTable show={show} lists={hasItems} />
     </>
   );
 };
