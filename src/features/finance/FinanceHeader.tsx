@@ -15,9 +15,9 @@ import Loading from "../../ui/Loading";
 
 const FinanceHeader = () => {
   const { orders, isLoading } = useGetOrders();
-  const {data} = useDetailUser();
+  const { data } = useDetailUser();
 
-  if (isLoading) return <Loading/>;
+  if (isLoading) return <Loading />;
 
   const total = orders?.reduce(
     (acc: number, cur: OrderType) => acc + cur.price,
@@ -51,10 +51,7 @@ const FinanceHeader = () => {
         </h4>
         <hr className="dark:border-slate-700 my-2 border-slate-200" />
         <Stats>
-          <Stat
-            title="تاریخ عضویت"
-            value={toLocaleDate(data?.user?.createdAt)}
-          >
+          <Stat title="تاریخ عضویت" value={toLocaleDate(data?.user?.createdAt)}>
             <RiCalendarLine size={29} className="text-orange-500" />
           </Stat>
           <Stat desc="تومان" title="پرداختی های شما" value={total}>
@@ -70,44 +67,53 @@ const FinanceHeader = () => {
         <hr className="dark:border-slate-700 my-2 border-slate-200" />
         {orders?.length ? (
           <Stats>
-          <Stat title="در انتظار ما" value={waitingOrders} desc="عدد سفارش">
-            <HiOutlineTruck size={32} className=" text-fuchsia-500" />
-          </Stat>
-          <Stat
-            title="سفارش های در جریان"
-            value={unCompletedOrders}
-            desc="عدد سفارش"
-          >
-            <RiLoaderLine size={32} className="animate-pulse text-yellow-400" />
-          </Stat>
-          <Stat
-            title="سفارش های تکمیل شده"
-            value={completedOrders}
-            desc="عدد سفارش"
-          >
-            <FaCheckDouble size={29} className="text-green-600" />
-          </Stat>
+            <Stat title="در انتظار ما" value={waitingOrders} desc="عدد سفارش">
+              <HiOutlineTruck size={32} className=" text-fuchsia-500" />
+            </Stat>
+            <Stat
+              title="سفارش های در جریان"
+              value={unCompletedOrders}
+              desc="عدد سفارش"
+            >
+              <RiLoaderLine
+                size={32}
+                className="animate-pulse text-yellow-400"
+              />
+            </Stat>
+            <Stat
+              title="سفارش های تکمیل شده"
+              value={completedOrders}
+              desc="عدد سفارش"
+            >
+              <FaCheckDouble size={29} className="text-green-600" />
+            </Stat>
 
-          <Stat
-            title="آخرین سفارش"
-            value={timeDifference(orders[0]?.createdAt)}
-            desc="از اخرین سفارش شما گذشته"
-          >
-            <LuCalendarClock size={29} className="text-blue-500" />
-          </Stat>
-          <Stat
-            title="بیشترین مبلغ سفارش"
-            value={maxPriceOrder?.price}
-            desc="تومان"
-          >
-            <TbMathMax size={29} className="text-zinc-100" />
-          </Stat>
-          <Stat title="بیشترین مورد سفارش" value={value} desc={`عدد ${label}`}>
-            <FaShirt size={29} className="text-rose-600" />
-          </Stat>
-        </Stats>
+            <Stat
+              title="آخرین سفارش"
+              value={timeDifference(orders[0]?.createdAt)}
+              desc="از اخرین سفارش شما گذشته"
+            >
+              <LuCalendarClock size={29} className="text-blue-500" />
+            </Stat>
+            <Stat
+              title="بیشترین مبلغ سفارش"
+              value={maxPriceOrder?.price}
+              desc="تومان"
+            >
+              <TbMathMax size={29} className="text-zinc-100" />
+            </Stat>
+            <Stat
+              title="بیشترین مورد سفارش"
+              value={value}
+              desc={`عدد ${label}`}
+            >
+              <FaShirt size={29} className="text-rose-600" />
+            </Stat>
+          </Stats>
         ) : (
-          <div className="w-full text-center text-lg mt-3">تا کنون سفارشی ثبت نکردید</div>
+          <div className="w-full text-center text-lg mt-3">
+            تا کنون سفارشی ثبت نکردید
+          </div>
         )}
       </div>
     </section>

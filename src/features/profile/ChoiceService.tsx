@@ -6,7 +6,7 @@ type HeaderProps = {
 
 const ChoiceService = ({ setShow }: HeaderProps) => {
   return (
-    <header className="flex mt-5 items-center justify-center gap-3 flex-wrap">
+    <header className="flex mt-5 items-center justify-between gap-3 flex-wrap">
       <button
         onClick={() => setShow(1)}
         className="lg:w-[300px] hover:scale-105 scale-100 transition-all duration-200 lg:h-[125px] h-[50px] w-[45%] gap-x-2 flex items-center justify-center rounded-xl bg-gradient-to-l from-green-500 to-lime-600 text-white shadow"

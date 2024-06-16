@@ -3,6 +3,7 @@ import ChoiceService from "../features/profile/ChoiceService";
 import FormBox from "../features/profile/formBox/FormBox";
 import PrevOrders from "../features/profile/prevOrders/PrevOrders";
 import ProfileHeader from "../features/profile/ProfileHeader";
+import WatinigOrders from "../features/profile/WatinigOrders";
 
 const Profile = () => {
   const [show, setShow] = useState(0);
@@ -21,6 +22,7 @@ const Profile = () => {
           <PrevOrders />
         </>
       ) : null}
+      <WatinigOrders/>
     </main>
   );
 };
