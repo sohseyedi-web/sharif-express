@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import AdminHeader from "./AdminHeader";
+import { ReactChidrenType } from "../../lib/types";
 
-const AdminLayout = ({ children }: { children: React.ReactNode }) => {
+const AdminLayout = ({ children }: ReactChidrenType) => {
   return (
     <section dir="rtl" className="flex container mx-auto flex-col">
       <AdminHeader />

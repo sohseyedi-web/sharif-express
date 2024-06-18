@@ -1,5 +1,5 @@
 import { RiEyeFill } from "react-icons/ri";
-import { SupportTypesBox } from "../../../lib/SupportTypes";
+import { SupportTypesBox } from "../../../lib/types";
 import ChangeStatus from "../../../ui/ChangeStatus";
 import toLocaleDate from "../../../utils/toLocadDate";
 import { toPersianNumbers } from "../../../utils/toPersianNumbers";

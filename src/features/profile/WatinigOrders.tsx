@@ -1,15 +1,14 @@
 import { useGetOrders } from "../../hooks/orders/useOrders";
 import Loading from "../../ui/Loading";
-import { OrderType } from "../../lib/OrderRowTypes";
+import { OrderType } from "../../lib/types/OrderRowTypes";
 import toLocaleDate from "../../utils/toLocadDate";
 
 const WatinigOrders = () => {
   const { orders, isLoading } = useGetOrders();
 
-  
   const waiting = orders?.filter((c: OrderType) => c.status == 0);
-  
-  if(!waiting?.length) return;
+
+  if (!waiting?.length) return;
   if (isLoading) return <Loading />;
 
   return (

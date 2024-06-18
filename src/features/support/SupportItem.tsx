@@ -1,12 +1,12 @@
 import { useRemoveSupport } from "../../hooks/supports/useSupports";
-import { SupportTypesBox } from "../../lib/SupportTypes";
+import { SupportTypesBox } from "../../lib/types";
 import toLocaleDate from "../../utils/toLocadDate";
 import { toPersianNumbers } from "../../utils/toPersianNumbers";
 import { RiDeleteBinLine } from "react-icons/ri";
 import ChangeStatus from "../../ui/ChangeStatus";
 import Loading from "../../ui/Loading";
 
-const SupportItem: React.FC<SupportTypesBox> = ({ support,index }) => {
+const SupportItem: React.FC<SupportTypesBox> = ({ support }) => {
   const { isDeleting, removeSupport } = useRemoveSupport();
 
   const handleRemoveCategory = () => {
@@ -20,7 +20,7 @@ const SupportItem: React.FC<SupportTypesBox> = ({ support,index }) => {
     >
       {isDeleting ? (
         <div className="flex items-center justify-center font-semibold">
-          <Loading status={false}/>
+          <Loading status={false} />
         </div>
       ) : (
         <>

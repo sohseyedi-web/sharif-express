@@ -1,4 +1,4 @@
-import { RadioInputProps } from "../lib/RadioType";
+import { RadioInputProps } from "../lib/types";
 
 const RadioInput = ({
   label,

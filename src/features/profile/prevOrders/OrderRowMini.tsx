@@ -1,6 +1,6 @@
 import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import toLocaleDate from "../../../utils/toLocadDate";
-import { OrderTable } from "../../../lib/OrderRowTypes";
+import { OrderTable } from "../../../lib/types";
 import PaymentDetail from "../../orders/PaymentDetail";
 import ChangeStatus from "../../../ui/ChangeStatus";
 
@@ -14,10 +14,10 @@ const OrderRowMini: React.FC<OrderTable> = ({ order, index }) => {
         address={order.address}
         price={toPersianNumbersWithComma(String(order.price))}
         serial={order.serialNumber}
-        way={order.payment}
         lists={order.lists}
+        created={order.createdAt}
       />
-      <ChangeStatus status={order.status} id={order._id} model={1}/>
+      <ChangeStatus status={order.status} id={order._id} model={1} />
       <td>{toLocaleDate(order.createdAt)}</td>
     </tr>
   );

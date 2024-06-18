@@ -5,7 +5,7 @@ import { RiLoaderLine } from "react-icons/ri";
 import { HiOutlineTruck } from "react-icons/hi";
 import Stats from "../../../ui/Stats/Stats";
 import { FaCheckDouble, FaSackDollar, FaShirt } from "react-icons/fa6";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 import Stat from "../../../ui/Stats/Stat";
 import { getCombinedOrders } from "../../../utils/getCombinedOrders";
 

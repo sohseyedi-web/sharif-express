@@ -1,15 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import * as RiIcon from "react-icons/ri";
+import { ModalType } from "../lib/types";
 
-type ModalTypeProps = {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  children: React.ReactNode;
-};
 
-const Modal = ({ open, onClose, children, title }: ModalTypeProps) => {
+const Modal = ({ open, onClose, children, title }: ModalType) => {
   return (
     <Transition appear show={open} as={Fragment}>
       <Dialog

@@ -5,7 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useChangeSupportStatus } from "../hooks/supports/useChangeSupportStatus";
 import { useChangeOrderStatus } from "../hooks/orders/useChangeOrderStatus";
 import Modal from "./Modal";
-import { ChangeStatusProps, statusStyle } from "../lib/StatusTypes";
+import { ChangeStatusProps, statusStyle } from "../lib/types";
 import { useDetailUser } from "../hooks/auth/useUser";
 import Loading from "./Loading";
 
@@ -23,7 +23,7 @@ const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
     () => setOpen(false)
   );
 
-  console.log(role)
+  console.log(role);
 
   const hanldeOpen = () => {
     if (role === "admin") {
@@ -67,7 +67,7 @@ const ChangeStatus: React.FC<ChangeStatusProps> = ({ model, status, id }) => {
             errors={errors}
           />
           <button className="btn btn-primary w-full badge">
-            {loading ? <Loading status={false}/> : "تایید"}
+            {loading ? <Loading status={false} /> : "تایید"}
           </button>
         </form>
       </Modal>

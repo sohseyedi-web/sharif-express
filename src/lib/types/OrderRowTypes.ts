@@ -21,4 +21,10 @@ export interface OrderTable {
   index: number;
 }
 
-
+export type PayemntDetailType = {
+  serial: number;
+  price: string;
+  address: string;
+  lists: { value: string; label: string; price: number }[];
+  created: Date;
+}

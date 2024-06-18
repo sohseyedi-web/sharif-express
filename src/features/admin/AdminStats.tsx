@@ -3,16 +3,13 @@ import {
   useAllGetOrders,
   useAllGetUsers,
 } from "../../hooks/admin/useGetAdminData";
-import { OrderType } from "../../lib/OrderRowTypes";
+import { OrderType } from "../../lib/types";
 import Stat from "../../ui/Stats/Stat";
 import * as PiIcon from "react-icons/pi";
-import { useGetSupports } from "../../hooks/supports/useSupports";
-import TopHeaderLists from "./TopHeaderLists";
 
 const AdminStats = () => {
   const { orders } = useAllGetOrders();
   const { data } = useAllGetUsers();
-  const { supports } = useGetSupports();
 
   const total = orders?.reduce(
     (acc: number, cur: OrderType) => acc + cur.price,

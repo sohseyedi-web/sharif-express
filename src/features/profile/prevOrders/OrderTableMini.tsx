@@ -1,16 +1,15 @@
 import { useGetOrders } from "../../../hooks/orders/useOrders";
 import Table from "../../../ui/Table";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 import { orderMiniListTableHeads } from "../../../constant/tableListOrderHeads";
 import OrderRowMini from "./OrderRowMini";
 import Loading from "../../../ui/Loading";
 
 const OrderTableMini = () => {
-  const { orders,isLoading } = useGetOrders();
+  const { orders, isLoading } = useGetOrders();
 
   if (!orders?.length) return <p>سفارشی ایجاد نکردید</p>;
-  if (isLoading) return <Loading/>;
-
+  if (isLoading) return <Loading />;
 
   return (
     <Table>

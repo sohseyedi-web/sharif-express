@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAllGetOrders } from "../../../hooks/admin/useGetAdminData";
 import FinanceHeader from "./FinanceHeader";
 import FinanceStats from "./FinanceStats";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 
 const FinanceInformation = () => {
   const { orders } = useAllGetOrders();

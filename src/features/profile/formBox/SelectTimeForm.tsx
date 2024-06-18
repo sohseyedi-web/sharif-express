@@ -1,23 +1,9 @@
 import RadioInputGroup from "../../../ui/RadioInputGroup";
-import {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-  UseFormReturn,
-} from "react-hook-form";
 import { toPersianNumbers } from "../../../utils/toPersianNumbers";
 import { addingStep } from "../../../store/reducer/orderReducer";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
-type FormType = {
-  register: UseFormRegister<FieldValues>;
-  isDirty: boolean;
-  isValid: boolean;
-  errors: FieldErrors<FieldValues>;
-  watch: UseFormReturn["watch"];
-  selectDate: string;
-};
+import { SelectTimeFormType } from "../../../lib/types";
 
 const SelectTimeForm = ({
   register,
@@ -26,7 +12,7 @@ const SelectTimeForm = ({
   isValid,
   watch,
   selectDate,
-}: FormType) => {
+}: SelectTimeFormType) => {
   const getDay = watch("day");
   const dispatch = useDispatch();
   const [currentHour, setCurrentHour] = useState<number | undefined>(undefined);
@@ -42,7 +28,6 @@ const SelectTimeForm = ({
       }
     }
   }, [selectDate]);
-
 
   return (
     <div className="space-y-1">

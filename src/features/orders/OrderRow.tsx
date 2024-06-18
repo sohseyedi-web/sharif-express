@@ -5,7 +5,7 @@ import {
 } from "../../utils/toPersianNumbers";
 import PaymentDetail from "./PaymentDetail";
 import toLocaleDate from "../../utils/toLocadDate";
-import { OrderTable } from "../../lib/OrderRowTypes";
+import { OrderTable } from "../../lib/types/OrderRowTypes";
 import ChangeStatus from "../../ui/ChangeStatus";
 
 const OrderRow: React.FC<OrderTable> = ({ order, index }) => {

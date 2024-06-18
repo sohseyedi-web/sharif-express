@@ -1,6 +1,6 @@
 import { orderListTableHeads } from "../../../constant/tableListOrderHeads";
 import { useAllGetOrders } from "../../../hooks/admin/useGetAdminData";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 import Loading from "../../../ui/Loading";
 import Table from "../../../ui/Table";
 import OrderAdminRow from "./OrderAdminRow";
@@ -8,7 +8,7 @@ import OrderAdminRow from "./OrderAdminRow";
 const OrdersAdminTable = () => {
   const { isLoading, orders } = useAllGetOrders();
 
-  if (isLoading) return <Loading/>;
+  if (isLoading) return <Loading />;
 
   return (
     <Table>

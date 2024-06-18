@@ -1,5 +1,5 @@
 import { get } from "react-hook-form";
-import { RadioInputGroupsProps } from "../lib/RadioType";
+import { RadioInputGroupsProps } from "../lib/types";
 import RadioInput from "./RadioInput";
 
 type OptionType = {

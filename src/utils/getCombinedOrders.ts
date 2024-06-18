@@ -1,4 +1,4 @@
-import { OrderType } from "../lib/OrderRowTypes";
+import { OrderType } from "../lib/types";
 
 type Item = {
   id?: number;

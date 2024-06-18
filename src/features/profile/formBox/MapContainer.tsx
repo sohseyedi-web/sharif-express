@@ -1,22 +1,10 @@
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import TextField from "../../../ui/TextField";
 import Loading from "../../../ui/Loading";
 import MapComponent from "./Map";
 import { useState } from "react";
+import { MapType } from "../../../lib/types";
 
-type MapTypes = {
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-  loading: boolean;
-};
-
-const MapContainer = ({
-  onSubmit,
-  register,
-  errors,
-  loading,
-}: MapTypes) => {
+const MapContainer = ({ onSubmit, register, errors, loading }: MapType) => {
   const [address, setAddress] = useState<string>("");
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

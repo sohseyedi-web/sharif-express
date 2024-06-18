@@ -7,7 +7,7 @@ import { LuCalendarClock } from "react-icons/lu";
 import toLocaleDate from "../../utils/toLocadDate";
 import timeDifference from "../../utils/getDaysago";
 import { TbMathMax } from "react-icons/tb";
-import { OrderType } from "./../../lib/OrderRowTypes";
+import { OrderType } from "../../lib/types";
 import { HiOutlineTruck } from "react-icons/hi2";
 import { getCombinedOrders } from "../../utils/getCombinedOrders";
 import { useDetailUser } from "../../hooks/auth/useUser";

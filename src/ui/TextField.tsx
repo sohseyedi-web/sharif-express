@@ -1,5 +1,5 @@
 import { get } from "react-hook-form";
-import { TextFieldTypes } from "../lib/TextFieldType";
+import { TextFieldTypes } from "../lib/types";
 
 function TextField({
   label,

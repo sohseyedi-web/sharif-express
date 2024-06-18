@@ -3,16 +3,9 @@ import Modal from "../../ui/Modal";
 import { useState } from "react";
 import toLocaleDate from "../../utils/toLocadDate";
 import { toPersianNumbersWithComma } from "./../../utils/toPersianNumbers";
+import { PayemntDetailType } from "../../lib/types";
 
-type PaymentDetailProps = {
-  serial: number;
-  price: string;
-  address: string;
-  lists: { value: string; label: string; price: number }[];
-  created: Date;
-};
-
-const PaymentDetail: React.FC<PaymentDetailProps> = ({
+const PaymentDetail: React.FC<PayemntDetailType> = ({
   serial,
   price,
   address,

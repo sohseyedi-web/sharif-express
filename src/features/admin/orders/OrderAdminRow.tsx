@@ -1,4 +1,4 @@
-import { OrderTable } from "../../../lib/OrderRowTypes";
+import { OrderTable } from "../../../lib/types";
 import ChangeStatus from "../../../ui/ChangeStatus";
 import toLocaleDate from "../../../utils/toLocadDate";
 import {

@@ -8,7 +8,7 @@ import timeDifference from "../../../utils/getDaysago";
 import { HiOutlineTruck } from "react-icons/hi";
 import { useParams } from "react-router-dom";
 import { useGetDetailUser } from "../../../hooks/admin/useGetAdminData";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 import { getCombinedOrders } from "../../../utils/getCombinedOrders";
 
 const UserDetailStatistics = () => {

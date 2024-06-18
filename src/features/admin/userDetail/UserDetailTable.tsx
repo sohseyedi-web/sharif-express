@@ -3,8 +3,7 @@ import Table from "../../../ui/Table";
 import OrderAdminRow from "../orders/OrderAdminRow";
 import SupportRow from "../supports/SupportRow";
 import { supportListTableHeads } from "../../../constant/tableListSupportHeads";
-import { OrderType } from "../../../lib/OrderRowTypes";
-import { SupportType } from "../../../lib/SupportTypes";
+import { SupportType,OrderType } from "../../../lib/types";
 
 type ListType = SupportType | OrderType;
 

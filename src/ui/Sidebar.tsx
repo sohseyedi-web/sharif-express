@@ -3,8 +3,9 @@ import Back from "./Back";
 import { RootState } from "../store/store";
 import { useDetailUser } from "../hooks/auth/useUser";
 import { useLocation } from "react-router-dom";
+import { ReactChidrenType } from "../lib/types";
 
-const Sidebar = ({ children }: { children: React.ReactNode }) => {
+const Sidebar = ({ children }: ReactChidrenType) => {
   const { active } = useSelector((state: RootState) => state.theme);
   const { data } = useDetailUser();
   const { pathname } = useLocation();

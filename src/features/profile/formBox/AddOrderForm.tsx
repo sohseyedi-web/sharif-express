@@ -2,16 +2,9 @@ import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import { addingStep, clearOrder } from "../../../store/reducer/orderReducer";
 import ListOrders from "./ListOrders";
 import { useDispatch } from "react-redux";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { AddOrderFormType } from "../../../lib/types";
 
-type AddOrderFormType = {
-  onChange: () => void;
-  isPrivate: boolean;
-  register: UseFormRegister<FieldValues>;
-  totalPrice: number;
-  isDirty: boolean;
-  isValid: boolean;
-};
+
 
 const AddOrderForm = ({
   totalPrice,

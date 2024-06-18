@@ -4,14 +4,14 @@ import { useState } from "react";
 import Modal from "../ui/Modal";
 import { useGetSupports } from "../hooks/supports/useSupports";
 import SupportItem from "../features/support/SupportItem";
-import { SupportType } from "../lib/SupportTypes";
+import { SupportType } from "../lib/types";
 import Loading from "../ui/Loading";
 
 const Support = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { isLoading, supports } = useGetSupports();
 
-  if (isLoading) return <Loading/>;
+  if (isLoading) return <Loading />;
 
   return (
     <>
@@ -26,7 +26,7 @@ const Support = () => {
         open={open}
         title="ثبت درخواست جدید"
       >
-        <CreateSupport onClose={() => setOpen(false)}/>
+        <CreateSupport onClose={() => setOpen(false)} />
       </Modal>
       {!supports.length ? (
         <section className="flex items-center justify-center mt-6">
@@ -34,8 +34,8 @@ const Support = () => {
         </section>
       ) : (
         <section className="flex items-center justify-between flex-wrap gap-y-3 mt-10">
-          {supports?.map((support: SupportType , index : number) => (
-            <SupportItem support={support} key={support?._id} index={index}/>
+          {supports?.map((support: SupportType, index: number) => (
+            <SupportItem support={support} key={support?._id} index={index} />
           ))}
         </section>
       )}

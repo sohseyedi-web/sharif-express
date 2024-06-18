@@ -1,6 +1,6 @@
-import React from "react";
+import { ReactChidrenType } from "../../lib/types";
 
-const Stats = ({ children }:{ children: React.ReactNode }) => {
+const Stats = ({ children }: ReactChidrenType) => {
   return (
     <header className="my-3 flex items-center justify-between flex-wrap gap-y-2">
       {children}

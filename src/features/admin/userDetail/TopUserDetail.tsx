@@ -4,12 +4,11 @@ import * as RiIcon from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import { useGetDetailUser } from "../../../hooks/admin/useGetAdminData";
 import toLocaleDate from "../../../utils/toLocadDate";
-import { OrderType } from "../../../lib/OrderRowTypes";
+import { OrderType } from "../../../lib/types";
 
 const TopUserDetail = () => {
   const { phone } = useParams();
   const { orders, user } = useGetDetailUser(String(phone));
-
 
   const total = orders?.reduce(
     (acc: number, cur: OrderType) => acc + cur.price,

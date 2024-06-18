@@ -1,6 +1,6 @@
 import { orderListTableHeads } from "../../constant/tableListOrderHeads";
 import { useGetOrders } from "../../hooks/orders/useOrders";
-import { OrderType } from "../../lib/OrderRowTypes";
+import { OrderType } from "../../lib/types/OrderRowTypes";
 import Loading from "../../ui/Loading";
 import Table from "../../ui/Table";
 import OrderRow from "./OrderRow";
